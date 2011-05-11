@@ -235,10 +235,10 @@ public class PlayClient implements IApplication {
 			logWindow.appendLogTo(Utility.stackTraceToString(e), true, false);
 		}
 
-		String software = String.format("%s プレイクライアント バージョン: %s", AppConstants.APP_NAME, AppConstants.VERSION);
+		String software = String.format("%s 플레이 클라이언트 버전: %s", AppConstants.APP_NAME, AppConstants.VERSION);
 		logWindow.appendLogTo(software, false, false);
-		logWindow.appendLogTo("プロトコル: " + IProtocol.NUMBER, false, false);
-		logWindow.appendLogTo("SSID機能: " + (Wlan.isLibraryAvailable ? "On" : "Off"), false, false);
+		logWindow.appendLogTo("프로토콜: " + IProtocol.NUMBER, false, false);
+		logWindow.appendLogTo("SSID 기능: " + (Wlan.isLibraryAvailable ?  "On" : "Off"), false, false);
 
 		Thread cronThread = new Thread(new Runnable() {
 			@Override
@@ -346,7 +346,7 @@ public class PlayClient implements IApplication {
 			@Override
 			protected void configureShell(Shell newShell) {
 				super.configureShell(newShell);
-				newShell.setText("設定");
+				newShell.setText("설정");
 				newShell.setImage(imageRegistry.get(ICON_TOOLBAR_CONFIG));
 			}
 
@@ -611,7 +611,7 @@ public class PlayClient implements IApplication {
 			server = portalServerList.next();
 
 		if (Utility.isEmpty(server)) {
-			query.failCallback(new ErrorLog("ポータルサーバーが設定されていません"));
+			query.failCallback(new ErrorLog("포털 서버가 설정되어 있지 않습니다"));
 			return;
 		}
 
@@ -641,7 +641,7 @@ public class PlayClient implements IApplication {
 
 								@Override
 								public void errorProtocolNumber(String number) {
-									String error = String.format("サーバーとのプロトコルナンバーが一致しないので接続できません サーバー:%s クライアント:%s", number,
+									String error = String.format("서버와의 프로토콜 넘버가 일치하지 않기 때문에 접속할 수 없습니다 서버 :%s 클라이언트 :%s", number,
 											IProtocol.NUMBER);
 									logWindow.appendLogTo(error, true, true);
 								}
@@ -662,7 +662,7 @@ public class PlayClient implements IApplication {
 									if (message != null)
 										query.successCallback(message);
 									else
-										query.failCallback(new ErrorLog("利用可能なサーバーが見つかりません"));
+										query.failCallback(new ErrorLog("이용 가능한 서버가 발견되지 않습니다"));
 								}
 							};
 						}

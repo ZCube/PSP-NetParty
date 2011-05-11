@@ -36,8 +36,8 @@ import pspnetparty.lib.socket.IProtocol;
 
 public class SearchServer {
 	public static void main(String[] args) throws Exception {
-		System.out.printf("%s 検索サーバー  version %s\n", AppConstants.APP_NAME, AppConstants.VERSION);
-		System.out.println("プロトコル: " + IProtocol.NUMBER);
+		System.out.printf("%s 검색 서버  version %sn", AppConstants.APP_NAME, AppConstants.VERSION);
+		System.out.println("프로토콜: " + IProtocol.NUMBER);
 
 		String iniFileName = "SearchServer.ini";
 		switch (args.length) {
@@ -45,41 +45,41 @@ public class SearchServer {
 			iniFileName = args[0];
 			break;
 		}
-		System.out.println("設定INIファイル名: " + iniFileName);
+		System.out.println("설정 INI 파일명: " + iniFileName);
 
 		IniFile ini = new IniFile(iniFileName);
 		IniSection settings = ini.getSection(IniConstants.SECTION_SETTINGS);
 
 		final int port = settings.get(IniConstants.PORT, 40000);
 		if (port < 1 || port > 65535) {
-			System.out.println("ポート番号が不正です: " + port);
+			System.out.println("포토 번호가 부정합니다: " + port);
 			return;
 		}
-		System.out.println("ポート: " + port);
+		System.out.println("포토: " + port);
 
 		int maxUsers = settings.get(IniConstants.MAX_USERS, 30);
 		if (maxUsers < 1) {
-			System.out.println("最大ユーザー数が不正です: " + maxUsers);
+			System.out.println("최대 유저수가 부정합니다: " + maxUsers);
 			return;
 		}
-		System.out.println("最大ユーザー数: " + maxUsers);
+		System.out.println("최대 유저수: " + maxUsers);
 
 		final String loginMessageFile = settings.get(IniConstants.LOGIN_MESSAGE_FILE, "");
-		System.out.println("ログインメッセージファイル : " + loginMessageFile);
+		System.out.println("로그인 메세지 파일 : " + loginMessageFile);
 
 		int maxSearchResults = settings.get(IniConstants.MAX_SEARCH_RESULTS, 50);
 		if (maxSearchResults < 1) {
-			System.out.println("最大検索件数が不正です: " + maxSearchResults);
+			System.out.println("최대 검색 건수가 부정합니다: " + maxSearchResults);
 			return;
 		}
-		System.out.println("最大検索件数: " + maxSearchResults);
+		System.out.println("최대 검색 건수: " + maxSearchResults);
 
 		int descriptionMaxLength = settings.get(IniConstants.DESCRIPTION_MAX_LENGTH, 100);
 		if (descriptionMaxLength < 1) {
-			System.out.println("部屋の詳細・備考の最大サイズが不正です: " + descriptionMaxLength);
+			System.out.println("방의 상세·비고의 최대 사이즈가 부정합니다: " + descriptionMaxLength);
 			return;
 		}
-		System.out.println("部屋の詳細・備考の最大文字数: " + descriptionMaxLength);
+		System.out.println("방의 상세·비고의 최대 문자수: " + descriptionMaxLength);
 
 		ini.saveToIni();
 
@@ -99,28 +99,28 @@ public class SearchServer {
 		handlers.put("help", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("shutdown\n\tサーバーを終了させる");
-				System.out.println("status\n\t現在のサーバーの状態を表示");
-				System.out.println("set MaxUsers ユーザー数\n\t最大ユーザー数を設定");
-				System.out.println("set MaxSearchResults 件数\n\t最大検索件数を設定");
-				System.out.println("set DescriptionMaxLength 文字数\n\t部屋の紹介・備考の最大文字数を設定");
-				System.out.println("notify メッセージ\n\t全員にメッセージを告知");
-				System.out.println("rooms\n\t保持している部屋情報の一覧");
-				System.out.println("portal list\n\t接続しているポータルサーバーの一覧");
-				System.out.println("portal accept\n\tポータル登録の受付開始");
-				System.out.println("portal reject\n\tポータル登録の受付停止");
+				System.out.println("shutdownnt 서버를 종료시킨다");
+				System.out.println("statusnt 현재의 서버 상태를 표시");
+				System.out.println("set MaxUsers 유저수nt최대 유저수를 설정");
+				System.out.println("set MaxSearchResults 건수 nt최대 검색 건수를 설정");
+				System.out.println("set DescriptionMaxLength 문자수nt방의 소개·비고의 최대 문자수를 설정");
+				System.out.println("notify 메세지 nt전원에게 메세지를 고지");
+				System.out.println("roomsnt 보관 유지하고 있는 방정보의 일람");
+				System.out.println("portal listnt 접속하고 있는 포털 서버의 일람");
+				System.out.println("portal acceptnt 포털 등록의 접수 개시");
+				System.out.println("portal rejectnt 포털 등록의 접수 정지");
 			}
 		});
 		handlers.put("status", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("ポート: " + port);
-				System.out.println("ユーザー数: " + engine.getCurrentUsers() + " / " + engine.getMaxUsers());
-				System.out.println("登録部屋数: " + engine.getRoomEntryCount());
-				System.out.println("最大検索件数: " + engine.getMaxSearchResults());
-				System.out.println("部屋の紹介・備考の最大文字数: " + engine.getDescriptionMaxLength());
-				System.out.println("ログインメッセージファイル : " + loginMessageFile);
-				System.out.println("ポータル登録: " + (engine.isAcceptingPortal() ? "受付中" : "停止中"));
+				System.out.println("포토: " + port);
+				System.out.println("유저수: " + engine.getCurrentUsers() + " / " + engine.getMaxUsers());
+				System.out.println("등록 방수: " + engine.getRoomEntryCount());
+				System.out.println("최대 검색 건수: " + engine.getMaxSearchResults());
+				System.out.println("방의 소개·비고의 최대 문자수: " + engine.getDescriptionMaxLength());
+				System.out.println("로그인 메세지 파일 : " + loginMessageFile);
+				System.out.println("포털 등록: " + (engine.isAcceptingPortal() ?  "접수중" : "정지중"));
 			}
 		});
 		handlers.put("set", new ICommandHandler() {
@@ -138,7 +138,7 @@ public class SearchServer {
 						if (max < 0)
 							return;
 						engine.setMaxUsers(max);
-						System.out.println("最大ユーザー数を " + max + " に設定しました");
+						System.out.println("최대 유저수를 " + max + " 로 설정했습니다");
 					} catch (NumberFormatException e) {
 					}
 				} else if (IniConstants.MAX_SEARCH_RESULTS.equalsIgnoreCase(key)) {
@@ -147,7 +147,7 @@ public class SearchServer {
 						if (max < 1)
 							return;
 						engine.setMaxSearchResults(max);
-						System.out.println("最大検索件数を " + max + " に設定しました");
+						System.out.println("최대 검색 건수를 " + max + " 로 설정했습니다");
 					} catch (NumberFormatException e) {
 					}
 				} else if (IniConstants.DESCRIPTION_MAX_LENGTH.equalsIgnoreCase(key)) {
@@ -156,7 +156,7 @@ public class SearchServer {
 						if (max < 1)
 							return;
 						engine.setDescriptionMaxLength(max);
-						System.out.println("部屋の紹介・備考の最大文字数を " + max + " に設定しました");
+						System.out.println("방의 소개·비고의 최대 문자수를 " + max + " 로 설정했습니다");
 					} catch (NumberFormatException e) {
 					}
 				}
@@ -165,7 +165,7 @@ public class SearchServer {
 		handlers.put("rooms", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("[全部屋登録の一覧]");
+				System.out.println("[전부가게 등록의 일람]");
 				System.out.println(engine.allRoomsToString());
 			}
 		});
@@ -173,14 +173,14 @@ public class SearchServer {
 			@Override
 			public void process(String argument) {
 				if ("list".equalsIgnoreCase(argument)) {
-					System.out.println("[接続しているポータルサーバーの一覧]");
+					System.out.println("[접속하고 있는 포털 서버의 일람]");
 					System.out.println(engine.allPortalsToString());
 				} else if ("accept".equalsIgnoreCase(argument)) {
 					engine.setAcceptingPortal(true);
-					System.out.println("ポータル接続の受付を開始しました");
+					System.out.println("포털 접속의 접수를 개시했습니다");
 				} else if ("reject".equalsIgnoreCase(argument)) {
 					engine.setAcceptingPortal(false);
-					System.out.println("ポータル接続の受付を停止しました");
+					System.out.println("포털 접속의 접수를 정지했습니다");
 				}
 			}
 		});
@@ -191,7 +191,7 @@ public class SearchServer {
 					return;
 
 				engine.notifyAllClients(message);
-				System.out.println("メッセージを告知しました : " + message);
+				System.out.println("메세지를 고지했던 : " + message);
 			}
 		});
 

@@ -44,7 +44,7 @@ public class LobbyEngine {
 	private ILogger logger;
 	private File loginMessageFile;
 
-	private String title = "未設定";
+	private String title = "미설정";
 	private int maxUsers = Integer.MAX_VALUE;
 	private ConcurrentHashMap<String, LobbyProtocolDriver> loginUsers;
 
@@ -449,7 +449,7 @@ public class LobbyEngine {
 
 			LobbyStatusProtocolDriver driver = new LobbyStatusProtocolDriver(connection);
 
-			logger.log("ポータルから接続されました: " + driver.address);
+			logger.log("포털로부터 접속되었던: " + driver.address);
 
 			StringBuilder sb = new StringBuilder();
 			appendNotifyLobbyInfoForPortal(sb);
@@ -475,7 +475,7 @@ public class LobbyEngine {
 		@Override
 		public void connectionDisconnected() {
 			portalConnections.remove(this);
-			logger.log("ポータルから切断されました: " + address);
+			logger.log("포털로부터 절단 되었던: " + address);
 		}
 
 		@Override

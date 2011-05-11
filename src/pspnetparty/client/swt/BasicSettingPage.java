@@ -53,7 +53,7 @@ public class BasicSettingPage extends PreferencePage {
 	private Button tunnelTransportUdp;
 
 	public BasicSettingPage(IniSettings settings) {
-		super("基本設定");
+		super("기본 설정");
 		this.settings = settings;
 
 		noDefaultAndApplyButton();
@@ -82,31 +82,31 @@ public class BasicSettingPage extends PreferencePage {
 		configUserNameContainer.setLayout(gridLayout);
 
 		Label configUserNameLabel = new Label(configUserNameContainer, SWT.NONE);
-		configUserNameLabel.setText("ユーザー名");
+		configUserNameLabel.setText("유저명");
 
 		userNameText = new Text(configUserNameContainer, SWT.SINGLE | SWT.BORDER);
 		userNameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		userNameText.setTextLimit(AppConstants.LOGIN_NAME_LIMIT);
 
 		appCloseConfirmCheck = new Button(configContainer, SWT.CHECK | SWT.FLAT);
-		appCloseConfirmCheck.setText("アプリケーションを閉じる時に確認する");
+		appCloseConfirmCheck.setText("어플리케이션을 닫을 때에 확인한다");
 
 		logLobbyEnterExitCheck = new Button(configContainer, SWT.CHECK | SWT.FLAT);
-		logLobbyEnterExitCheck.setText("ロビーの入退室ログを表示する");
+		logLobbyEnterExitCheck.setText("로비의 입퇴실 로그를 표시한다");
 
 		Group configTaskTrayBalloonGroup = new Group(configContainer, SWT.SHADOW_IN);
-		configTaskTrayBalloonGroup.setText("タスクトレイからバルーンで通知");
+		configTaskTrayBalloonGroup.setText("task tray로부터 벌룬으로 통지");
 		configTaskTrayBalloonGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		configTaskTrayBalloonGroup.setLayout(new GridLayout(1, false));
 
 		balloonNotifyLobbyCheck = new Button(configTaskTrayBalloonGroup, SWT.CHECK | SWT.FLAT);
-		balloonNotifyLobbyCheck.setText("ロビーのログメッセージ");
+		balloonNotifyLobbyCheck.setText("로비의 로그 메세지");
 
 		balloonNotifyRoomCheck = new Button(configTaskTrayBalloonGroup, SWT.CHECK | SWT.FLAT);
-		balloonNotifyRoomCheck.setText("プレイルームのログメッセージ");
+		balloonNotifyRoomCheck.setText("플레이 룸의 로그 메세지");
 
 		Group configTunnelGroup = new Group(configContainer, SWT.SHADOW_IN);
-		configTunnelGroup.setText("トンネル通信");
+		configTunnelGroup.setText("터널 통신");
 		configTunnelGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		gridLayout = new GridLayout(3, false);
 		gridLayout.horizontalSpacing = 5;
@@ -116,7 +116,7 @@ public class BasicSettingPage extends PreferencePage {
 		configTunnelGroup.setLayout(gridLayout);
 
 		Label tunnelTransportLayer = new Label(configTunnelGroup, SWT.NONE);
-		tunnelTransportLayer.setText("トランスポート層: ");
+		tunnelTransportLayer.setText("트랜스폴트층: ");
 
 		tunnelTransportTcp = new Button(configTunnelGroup, SWT.RADIO | SWT.FLAT);
 		tunnelTransportTcp.setText("TCP");
@@ -125,7 +125,7 @@ public class BasicSettingPage extends PreferencePage {
 		tunnelTransportUdp.setText("UDP");
 
 		Group configPortalServerGroup = new Group(configContainer, SWT.SHADOW_IN);
-		configPortalServerGroup.setText("ポータルサーバー");
+		configPortalServerGroup.setText("포털 서버");
 		configPortalServerGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		gridLayout = new GridLayout(2, false);
 		gridLayout.horizontalSpacing = 5;
@@ -135,11 +135,11 @@ public class BasicSettingPage extends PreferencePage {
 		configPortalServerGroup.setLayout(gridLayout);
 
 		privatePortalServerUseCheck = new Button(configPortalServerGroup, SWT.CHECK | SWT.FLAT);
-		privatePortalServerUseCheck.setText("ポータルサーバーを指定する (指定しなければ公開のポータルサーバーを使います)");
+		privatePortalServerUseCheck.setText("포털 서버를 지정한다 (지정하지 않으면 공개의 포털 서버를 사용합니다)");
 		privatePortalServerUseCheck.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
 
 		Label configPortalServerAddressLabel = new Label(configPortalServerGroup, SWT.NONE);
-		configPortalServerAddressLabel.setText("サーバーアドレス");
+		configPortalServerAddressLabel.setText("서버 주소");
 		configPortalServerAddressLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 
 		privatePortalServerAddress = new Text(configPortalServerGroup, SWT.BORDER | SWT.SINGLE);
@@ -147,7 +147,7 @@ public class BasicSettingPage extends PreferencePage {
 		privatePortalServerAddress.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		Group configMyRoomGroup = new Group(configContainer, SWT.SHADOW_IN);
-		configMyRoomGroup.setText("マイルーム");
+		configMyRoomGroup.setText("마이룸");
 		configMyRoomGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		gridLayout = new GridLayout(1, false);
 		gridLayout.horizontalSpacing = 0;
@@ -157,7 +157,7 @@ public class BasicSettingPage extends PreferencePage {
 		configMyRoomGroup.setLayout(gridLayout);
 
 		myRoomAllowEmptyMasterNameCheck = new Button(configMyRoomGroup, SWT.CHECK | SWT.FLAT);
-		myRoomAllowEmptyMasterNameCheck.setText("アドレスの部屋主名を省略でもログインできるようにする");
+		myRoomAllowEmptyMasterNameCheck.setText("주소의 방주명을 생략에서도 로그인할 수 있도록(듯이) 한다");
 		myRoomAllowEmptyMasterNameCheck.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 
 		userNameText.setText(Utility.validateUserName(settings.getUserName()));
@@ -206,7 +206,7 @@ public class BasicSettingPage extends PreferencePage {
 			setErrorMessage(null);
 		} else {
 			setValid(false);
-			setErrorMessage("ユーザー名が不正な値です");
+			setErrorMessage("유저명이 부정한 값입니다");
 		}
 	}
 

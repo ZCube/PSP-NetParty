@@ -456,13 +456,13 @@ public class MyRoomEngine {
 				}
 
 				if (playersByName.size() >= maxPlayers - 1) {
-					// 最大人数を超えたので接続を拒否します
+					// 최대 인원수를 넘었으므로 접속을 거부합니다
 					player.getConnection().send(ProtocolConstants.Room.ERROR_LOGIN_BEYOND_CAPACITY);
 					return false;
 				}
 
 				if (playersByName.putIfAbsent(loginName, player) != null) {
-					// 同名のユーザーが存在するので接続を拒否します
+					// 동명의 유저가 존재하므로 접속을 거부합니다
 					player.getConnection().send(ProtocolConstants.Room.ERROR_LOGIN_DUPLICATED_NAME);
 					return false;
 				}

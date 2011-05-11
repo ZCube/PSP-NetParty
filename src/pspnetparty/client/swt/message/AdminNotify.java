@@ -28,7 +28,7 @@ import pspnetparty.client.swt.IniAppearance;
 public class AdminNotify extends AbstractMessage {
 
 	public AdminNotify(String message) {
-		super("サーバー告知", message);
+		super("서버 고지", message);
 	}
 
 	@Override

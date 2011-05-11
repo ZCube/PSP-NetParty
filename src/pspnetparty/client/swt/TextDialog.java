@@ -60,7 +60,7 @@ public class TextDialog extends Dialog {
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText(title);
-		newShell.setImeInputMode(imeInputMode);
+		//newShell.setImeInputMode(imeInputMode);
 	}
 
 	@Override

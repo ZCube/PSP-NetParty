@@ -36,8 +36,8 @@ import pspnetparty.lib.socket.IProtocol;
 
 public class LobbyServer {
 	public static void main(String[] args) throws Exception {
-		System.out.printf("%s ロビーサーバー  version %s\n", AppConstants.APP_NAME, AppConstants.VERSION);
-		System.out.println("プロトコル: " + IProtocol.NUMBER);
+		System.out.printf("%s 로비 서버  version %sn", AppConstants.APP_NAME, AppConstants.VERSION);
+		System.out.println("프로토콜: " + IProtocol.NUMBER);
 
 		String iniFileName = "LobbyServer.ini";
 		switch (args.length) {
@@ -45,23 +45,23 @@ public class LobbyServer {
 			iniFileName = args[0];
 			break;
 		}
-		System.out.println("設定INIファイル名: " + iniFileName);
+		System.out.println("설정 INI 파일명: " + iniFileName);
 
 		IniFile ini = new IniFile(iniFileName);
 		IniSection settings = ini.getSection(IniConstants.SECTION_SETTINGS);
 
 		final int port = settings.get(IniConstants.PORT, 60000);
 		if (port < 1 || port > 65535) {
-			System.out.println("ポート番号が不正です: " + port);
+			System.out.println("포토 번호가 부정합니다: " + port);
 			return;
 		}
-		System.out.println("ポート: " + port);
+		System.out.println("포토: " + port);
 
-		String title = settings.get(IniConstants.LOBBY_TITLE, "ロビー");
-		System.out.println("ロビー名: " + title);
+		String title = settings.get(IniConstants.LOBBY_TITLE, "로비");
+		System.out.println("로비명: " + title);
 
 		final String loginMessageFile = settings.get(IniConstants.LOGIN_MESSAGE_FILE, "");
-		System.out.println("ログインメッセージファイル : " + loginMessageFile);
+		System.out.println("로그인 메세지 파일 : " + loginMessageFile);
 
 		ini.saveToIni();
 
@@ -79,23 +79,23 @@ public class LobbyServer {
 		handlers.put("help", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("shutdown\n\tサーバーを終了させる");
-				System.out.println("status\n\t現在のサーバーの状態を表示");
-				System.out.println("set Title ロビー名\n\tロビー名を設定");
-				System.out.println("notify メッセージ\n\t全員にメッセージを告知");
-				System.out.println("portal list\n\t登録中のポータル一覧");
-				System.out.println("portal accept\n\tポータル登録の受付開始");
-				System.out.println("portal reject\n\tポータル登録の受付停止");
+				System.out.println("shutdownnt 서버를 종료시킨다");
+				System.out.println("statusnt 현재의 서버 상태를 표시");
+				System.out.println("set Title 로비명 nt로비명을 설정");
+				System.out.println("notify 메세지 nt전원에게 메세지를 고지");
+				System.out.println("portal listnt 등록중의 포털 일람");
+				System.out.println("portal acceptnt 포털 등록의 접수 개시");
+				System.out.println("portal rejectnt 포털 등록의 접수 정지");
 			}
 		});
 		handlers.put("status", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("ポート: " + port);
-				System.out.println("ロビー名: " + engine.getTitle());
-				System.out.println("ユーザー数: " + engine.getCurrentPlayers());
-				System.out.println("ログインメッセージファイル : " + loginMessageFile);
-				System.out.println("ポータル登録: " + (engine.isAcceptingPortal() ? "受付中" : "停止中"));
+				System.out.println("포토: " + port);
+				System.out.println("로비명: " + engine.getTitle());
+				System.out.println("유저수: " + engine.getCurrentPlayers());
+				System.out.println("로그인 메세지 파일 : " + loginMessageFile);
+				System.out.println("포털 등록: " + (engine.isAcceptingPortal() ?  "접수중" : "정지중"));
 			}
 		});
 		handlers.put("notify", new ICommandHandler() {
@@ -105,7 +105,7 @@ public class LobbyServer {
 					return;
 
 				engine.notifyAllUsers(message);
-				System.out.println("メッセージを告知しました : " + message);
+				System.out.println("메세지를 고지했던 : " + message);
 			}
 		});
 		handlers.put("set", new ICommandHandler() {
@@ -119,7 +119,7 @@ public class LobbyServer {
 				String value = tokens[1];
 				if (IniConstants.LOBBY_TITLE.equalsIgnoreCase(key)) {
 					engine.setTitle(value);
-					System.out.println("ロビー名を " + value + " に設定しました");
+					System.out.println("로비명을 " + value + " 로 설정했습니다");
 				}
 			}
 		});
@@ -128,16 +128,16 @@ public class LobbyServer {
 			public void process(String argument) {
 				String action = argument.trim();
 				if ("list".equalsIgnoreCase(action)) {
-					System.out.println("[登録中のポータルサーバーの一覧]");
+					System.out.println("[등록중의 포털 서버의 일람]");
 					for (InetSocketAddress address : engine.getPortalAddresses()) {
 						System.out.println(address.getAddress().getHostAddress() + ":" + address.getPort());
 					}
 				} else if ("accept".equalsIgnoreCase(action)) {
 					engine.setAcceptingPortal(true);
-					System.out.println("ポータル接続の受付を開始しました");
+					System.out.println("포털 접속의 접수를 개시했습니다");
 				} else if ("reject".equalsIgnoreCase(action)) {
 					engine.setAcceptingPortal(false);
-					System.out.println("ポータル接続の受付を停止しました");
+					System.out.println("포털 접속의 접수를 정지했습니다");
 				}
 			}
 		});

@@ -46,7 +46,7 @@ public class LobbyChangeNameDialog extends Dialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("新しいユーザー名を入力してください");
+		newShell.setText("새로운 유저명을 입력해 주세요");
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class LobbyChangeNameDialog extends Dialog {
 		GridData gridData;
 
 		Label label = new Label(composite, SWT.NONE);
-		label.setText("現在のユーザー名: " + origName);
+		label.setText("현재의 유저명: " + origName);
 
 		final Text newNameText = new Text(composite, SWT.BORDER | SWT.SINGLE);
 		newNameText.setText(origName);

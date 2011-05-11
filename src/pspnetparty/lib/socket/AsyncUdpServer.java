@@ -221,7 +221,7 @@ public class AsyncUdpServer implements IServer {
 				}
 			}
 
-			// logger.log("UDP Server Ping送信: p=" + pingCount + " d=" +
+			// logger.log("UDP Server Ping 송신: p=" + pingCount + " d=" +
 			// disconnectCount);
 			Thread.sleep(IProtocol.PING_INTERVAL);
 		}
@@ -373,7 +373,7 @@ public class AsyncUdpServer implements IServer {
 
 			@Override
 			public IProtocolDriver createDriver(final ISocketConnection connection) {
-				System.out.println(connection.getRemoteAddress() + " [接続されました]");
+				System.out.println(connection.getRemoteAddress() + " [접속되었습니다]");
 
 				Thread pingThread = new Thread(new Runnable() {
 					@Override
@@ -408,7 +408,7 @@ public class AsyncUdpServer implements IServer {
 
 					@Override
 					public void connectionDisconnected() {
-						System.out.println(connection.getRemoteAddress() + " [切断されました]");
+						System.out.println(connection.getRemoteAddress() + " [절단 되었습니다]");
 					}
 
 					@Override

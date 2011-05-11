@@ -101,7 +101,7 @@ public class TraficStatistics {
 
 			switch (index) {
 			case 0:
-				return stats.isMine ? "自" : "";
+				return stats.isMine ?  "자" : "";
 			case 1:
 				return stats.macAddress;
 			case 2:

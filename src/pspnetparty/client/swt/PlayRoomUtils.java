@@ -89,7 +89,7 @@ public class PlayRoomUtils {
 			case 2:
 				return room.getCurrentPlayers() + " / " + room.getMaxPlayers();
 			case 3:
-				return room.hasPassword() ? "有" : "";
+				return room.hasPassword() ?  "유" : "";
 			case 4:
 				return DATE_FORMAT.format(new Date(room.getCreatedTime()));
 			case 5:

@@ -115,7 +115,7 @@ public class LobbyWindow implements IMessageSource {
 		// Shell parentShell = application.getShell();
 		shell = new Shell(SWT.SHELL_TRIM);// | SWT.TOOL);
 
-		shell.setText("ロビー");
+		shell.setText("로비");
 		try {
 			shell.setImages(application.getShellImages());
 		} catch (RuntimeException e) {
@@ -151,7 +151,7 @@ public class LobbyWindow implements IMessageSource {
 		application.initControl(serverLoginButton);
 
 		userStateCombo = new Combo(infoContainer, SWT.BORDER | SWT.READ_ONLY);
-		userStateCombo.setItems(new String[] { "参加中", "離席中", "プレイ中", "非アクティブ" });
+		userStateCombo.setItems(new String[] { "참가중", "자리를 뜸중", "플레이중", "비액티브" });
 		userStateCombo.setEnabled(false);
 		userStateCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		application.initControl(userStateCombo);
@@ -164,11 +164,11 @@ public class LobbyWindow implements IMessageSource {
 		application.initControl(userListTable);
 
 		TableColumn columnUserNameColumn = new TableColumn(userListTable, SWT.LEFT);
-		columnUserNameColumn.setText("名前");
+		columnUserNameColumn.setText("이름");
 		SwtUtils.installSorter(userListTableViewer, columnUserNameColumn, LobbyUser.NAME_SORTER);
 
 		TableColumn columnUserState = new TableColumn(userListTable, SWT.LEFT);
-		columnUserState.setText("状態");
+		columnUserState.setText("상태");
 		SwtUtils.installSorter(userListTableViewer, columnUserState, LobbyUser.STATE_SORTER);
 
 		userListTableViewer.setLabelProvider(LobbyUser.LABEL_PROVIDER);
@@ -198,7 +198,7 @@ public class LobbyWindow implements IMessageSource {
 		application.initChatControl(chatText);
 
 		multilineChatButton = new Button(chatContainer, SWT.PUSH);
-		multilineChatButton.setText("複数行");
+		multilineChatButton.setText("복수행");
 		application.initControl(multilineChatButton);
 
 		Composite statusBarContainer = new Composite(shell, SWT.NONE);
@@ -209,14 +209,14 @@ public class LobbyWindow implements IMessageSource {
 		statusBarContainer.setLayout(gridLayout);
 
 		statusServerAddressLabel = new Label(statusBarContainer, SWT.NONE);
-		statusServerAddressLabel.setText("ロビーサーバー: ");
+		statusServerAddressLabel.setText("로비 서버: ");
 
 		gridData = new GridData(SWT.CENTER, SWT.CENTER, false, false);
 		gridData.heightHint = 15;
 		new Label(statusBarContainer, SWT.SEPARATOR | SWT.VERTICAL).setLayoutData(gridData);
 
 		statusLobbyNameLabel = new Label(statusBarContainer, SWT.NONE);
-		statusLobbyNameLabel.setText("ログインしていません");
+		statusLobbyNameLabel.setText("로그인하고 있습니다");
 
 		new Label(statusBarContainer, SWT.SEPARATOR | SWT.VERTICAL).setLayoutData(gridData);
 
@@ -317,7 +317,7 @@ public class LobbyWindow implements IMessageSource {
 
 		Menu lobbyUserMenu = new Menu(shell, SWT.POP_UP);
 		menuPrivateChat = new MenuItem(lobbyUserMenu, SWT.PUSH);
-		menuPrivateChat.setText("プライベートメッセージ");
+		menuPrivateChat.setText("프라이빗 메세지");
 		menuPrivateChat.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event event) {
@@ -328,7 +328,7 @@ public class LobbyWindow implements IMessageSource {
 				if (user == null || myName.equals(user.getName()))
 					return;
 
-				TextDialog dialog = new TextDialog(shell, "プライベートメッセージの送信", user.getName() + " にメッセージを送信します", "送信", 250);
+				TextDialog dialog = new TextDialog(shell, "프라이빗 메세지의 송신", user.getName() + " 에 메세지를 송신합니다", "송신", 250);
 				switch (dialog.open()) {
 				case IDialogConstants.OK_ID:
 					String message = dialog.getUserInput();
@@ -367,7 +367,7 @@ public class LobbyWindow implements IMessageSource {
 
 		Menu lobbyLoginNameMenu = new Menu(shell, SWT.POP_UP);
 		menuLoginNameChange = new MenuItem(lobbyLoginNameMenu, SWT.PUSH);
-		menuLoginNameChange.setText("ユーザー名変更");
+		menuLoginNameChange.setText("유저명 변경");
 		menuLoginNameChange.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event event) {
@@ -442,9 +442,9 @@ public class LobbyWindow implements IMessageSource {
 			}
 
 			if (loginSuccess) {
-				serverLoginButton.setText("ログアウト");
+				serverLoginButton.setText("로그아웃");
 			} else {
-				serverLoginButton.setText("ログイン");
+				serverLoginButton.setText("로그인");
 			}
 			serverLoginButton.getParent().layout();
 			serverLoginButton.setEnabled(true);
@@ -501,7 +501,7 @@ public class LobbyWindow implements IMessageSource {
 			}
 
 			if (list.isEmpty()) {
-				ErrorLog log = new ErrorLog("ロビーサーバーが見つかりません");
+				ErrorLog log = new ErrorLog("로비 서버가 발견되지 않습니다");
 				chatLogViewer.appendMessage(log);
 			} else {
 				LobbyServerSelectDialog dialog = new LobbyServerSelectDialog(shell, list);
@@ -522,7 +522,7 @@ public class LobbyWindow implements IMessageSource {
 		loginUserName = application.getSettings().getUserName();
 
 		serverLoginButton.setEnabled(false);
-		statusServerAddressLabel.setText("ロビーサーバー: " + address);
+		statusServerAddressLabel.setText("로비 서버: " + address);
 
 		try {
 			InetSocketAddress socketAddress = Utility.parseSocketAddress(address);
@@ -543,7 +543,7 @@ public class LobbyWindow implements IMessageSource {
 				lobbyConnection.send(ProtocolConstants.Lobby.COMMAND_CHAT + TextProtocolDriver.ARGUMENT_SEPARATOR + message);
 				return true;
 			default:
-				InfoLog log = new InfoLog("サーバーにログインしていません");
+				InfoLog log = new InfoLog("서버에 로그인하고 있습니다");
 				chatLogViewer.appendMessage(log);
 			}
 		}
@@ -629,11 +629,11 @@ public class LobbyWindow implements IMessageSource {
 			}
 
 			if (Utility.isEmpty(title)) {
-				statusLobbyNameLabel.setText("ログインしていません");
-				shell.setText("ロビー");
+				statusLobbyNameLabel.setText("로그인하고 있습니다");
+				shell.setText("로비");
 			} else {
-				statusLobbyNameLabel.setText("ロビー名: " + title);
-				shell.setText("ロビー (" + title + ")");
+				statusLobbyNameLabel.setText("로비명: " + title);
+				shell.setText("로비 (" + title + ")");
 			}
 
 			statusLobbyNameLabel.getParent().layout();
@@ -715,7 +715,7 @@ public class LobbyWindow implements IMessageSource {
 
 				IniSettings settings = application.getSettings();
 				if (!name.equals(userNameLabel.getText()) && settings.isLogLobbyEnterExit()) {
-					InfoLog log = new InfoLog(name + " がログインしました");
+					InfoLog log = new InfoLog(name + " 가 로그인했습니다");
 					chatLogViewer.appendMessage(log);
 
 					if (settings.isBallonNotifyLobby())
@@ -750,7 +750,7 @@ public class LobbyWindow implements IMessageSource {
 
 			IniSettings settings = application.getSettings();
 			if (settings.isLogLobbyEnterExit()) {
-				InfoLog log = new InfoLog(name + " がログアウトしました");
+				InfoLog log = new InfoLog(name + " 가 로그아웃 했습니다");
 				chatLogViewer.appendMessage(log);
 
 				if (settings.isBallonNotifyLobby() && settings.isLogLobbyEnterExit())
@@ -779,10 +779,10 @@ public class LobbyWindow implements IMessageSource {
 			if (oldName.equals(userNameLabel.getText())) {
 				setLobbyLoginUserName(newName);
 
-				InfoLog log = new InfoLog(newName + " に名前を変更しました");
+				InfoLog log = new InfoLog(newName + " 로 이름을 변경했습니다");
 				chatLogViewer.appendMessage(log);
 			} else {
-				InfoLog log = new InfoLog(oldName + " が " + newName + " に名前を変更しました");
+				InfoLog log = new InfoLog(oldName + " 가 " + newName + " 로 이름을 변경했습니다");
 				chatLogViewer.appendMessage(log);
 			}
 
@@ -846,7 +846,7 @@ public class LobbyWindow implements IMessageSource {
 
 		@Override
 		public void errorProtocolNumber(String number) {
-			String error = String.format("サーバーとのプロトコルナンバーが一致しないので接続できません サーバー:%s クライアント:%s", number, IProtocol.NUMBER);
+			String error = String.format("서버와의 프로토콜 넘버가 일치하지 않기 때문에 접속할 수 없습니다 서버 :%s 클라이언트 :%s", number, IProtocol.NUMBER);
 			ErrorLog log = new ErrorLog(error);
 			chatLogViewer.appendMessage(log);
 		}
@@ -873,13 +873,13 @@ public class LobbyWindow implements IMessageSource {
 
 				userStateCombo.setEnabled(false);
 				userStateCombo.deselect(0);
-				statusServerAddressLabel.setText("ロビーサーバー: ");
+				statusServerAddressLabel.setText("로비 서버: ");
 				updateLobbyTitle("");
 
 				lobbyUserMap.clear();
 				userListTableViewer.refresh();
 
-				ServerLog log = new ServerLog("ロビーサーバーからログアウトしました");
+				ServerLog log = new ServerLog("로비 서버로부터 로그아웃 했습니다");
 				chatLogViewer.appendMessage(log);
 				if (application.getSettings().isBallonNotifyLobby())
 					application.balloonNotify(shell, log.getMessage());
@@ -920,7 +920,7 @@ public class LobbyWindow implements IMessageSource {
 					userStateCombo.select(0);
 					chatText.setFocus();
 
-					ServerLog log = new ServerLog(name + " としてログインしました");
+					ServerLog log = new ServerLog(name + " 로서 로그인했습니다");
 					chatLogViewer.appendMessage(log);
 				} catch (SWTException e) {
 				}
@@ -1048,7 +1048,7 @@ public class LobbyWindow implements IMessageSource {
 		lobbyHandlers.put(ProtocolConstants.Lobby.ERROR_LOGIN_USER_BEYOND_CAPACITY, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				ErrorLog log = new ErrorLog("ロビーが満室なので入れません");
+				ErrorLog log = new ErrorLog("로비가 만실이므로 넣지 않습니다");
 				chatLogViewer.appendMessage(log);
 				return false;
 			}
@@ -1058,12 +1058,12 @@ public class LobbyWindow implements IMessageSource {
 			public boolean process(IProtocolDriver driver, String argument) {
 				switch (sessionState) {
 				case CONNECTING: {
-					ErrorLog log = new ErrorLog("同名のユーザーが既にログインしているのでログインできません");
+					ErrorLog log = new ErrorLog("동명의 유저가 이미 로그인하고 있으므로 로그인할 수 없습니다");
 					chatLogViewer.appendMessage(log);
 					break;
 				}
 				case LOGIN: {
-					ErrorLog log = new ErrorLog("同名のユーザーが既にログインしているので名前の変更はできません");
+					ErrorLog log = new ErrorLog("동명의 유저가 이미 로그인하고 있으므로 이름의 변경은 할 수 없습니다");
 					chatLogViewer.appendMessage(log);
 					break;
 				}

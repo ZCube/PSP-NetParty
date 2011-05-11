@@ -186,7 +186,7 @@ public class Utility {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(transport);
-		sb.append(" Ping受信: ");
+		sb.append(" Ping 수신: ");
 
 		sb.append(socketAddressToStringByIP(remote));
 		sb.append(" -> ");
@@ -203,7 +203,7 @@ public class Utility {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append(transport);
-		sb.append(" PING切断: ");
+		sb.append(" PING 절단: ");
 
 		date.setTime(deadline);
 		sb.append("Deadline[");

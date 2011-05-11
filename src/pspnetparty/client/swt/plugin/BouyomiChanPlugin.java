@@ -73,12 +73,12 @@ public class BouyomiChanPlugin implements IPlugin, IPluginConfigPageProvider {
 	public BouyomiChanPlugin() {
 		headerBuffer = ByteBuffer.allocate(15);
 		headerBuffer.order(ByteOrder.LITTLE_ENDIAN);
-		headerBuffer.putShort((short) 0); // コマンド
-		headerBuffer.putShort((short) -1); // 速度
-		headerBuffer.putShort((short) -1); // 音量
+		headerBuffer.putShort((short) 0); // 커맨드
+		headerBuffer.putShort((short) -1); // 속도
+		headerBuffer.putShort((short) -1); // 음량
 		// buffer.putShort((short) 0);
-		headerBuffer.putShort((short) 0); // 声質
-		headerBuffer.put((byte) 0); // 文字コード
+		headerBuffer.putShort((short) 0); // 소리질
+		headerBuffer.put((byte) 0); // 문자 코드
 	}
 
 	public void sendMessage(InetSocketAddress address, String message) {
@@ -112,7 +112,7 @@ public class BouyomiChanPlugin implements IPlugin, IPluginConfigPageProvider {
 				iniSection.set(INI_USE, false);
 
 				errorCount = 0;
-				application.getLogWindow().appendLogTo("棒読みちゃんに接続できませんでした。設定を見直してください。", true, true);
+				application.getLogWindow(). appendLogTo("봉 읽어 짱에 접속할 수 없었습니다. 설정을 다시 봐 주세요. ", true, true);
 			}
 		}
 	}
@@ -197,7 +197,7 @@ public class BouyomiChanPlugin implements IPlugin, IPluginConfigPageProvider {
 		private Button readPrivateChatCheck;
 
 		public BouyomiChanPage() {
-			super("棒読みちゃん");
+			super("봉 읽어 짱");
 			noDefaultAndApplyButton();
 		}
 
@@ -215,12 +215,12 @@ public class BouyomiChanPlugin implements IPlugin, IPluginConfigPageProvider {
 			container.setLayout(gridLayout);
 
 			useCheckButton = new Button(container, SWT.CHECK | SWT.FLAT);
-			useCheckButton.setText("棒読みちゃんを使用する ※棒読みちゃん（フリーソフト）が別途必要になります");
+			useCheckButton.setText("봉 읽어 짱을 사용하는 ※봉 읽어 짱(프리 소프트)이 별도 필요하게 됩니다");
 			useCheckButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
 			useCheckButton.setSelection(use);
 
 			Label addressLabel = new Label(container, SWT.NONE);
-			addressLabel.setText("アドレス");
+			addressLabel.setText("주소");
 			addressLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 
 			addressText = new Text(container, SWT.BORDER | SWT.SINGLE);
@@ -230,22 +230,22 @@ public class BouyomiChanPlugin implements IPlugin, IPluginConfigPageProvider {
 			addressText.setEnabled(use);
 
 			readMyChatCheck = new Button(container, SWT.CHECK | SWT.FLAT);
-			readMyChatCheck.setText("自分のチャットを読み上げる");
+			readMyChatCheck.setText("자신의 채팅을 읽어 내린다");
 			readMyChatCheck.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, 2, 1));
 			readMyChatCheck.setSelection(readMyChat);
 
 			readRoomChatCheck = new Button(container, SWT.CHECK | SWT.FLAT);
-			readRoomChatCheck.setText("プレイルームのチャットを読み上げる");
+			readRoomChatCheck.setText("플레이 룸의 채팅을 읽어 내린다");
 			readRoomChatCheck.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, 2, 1));
 			readRoomChatCheck.setSelection(readRoomChat);
 
 			readLobbyChatCheck = new Button(container, SWT.CHECK | SWT.FLAT);
-			readLobbyChatCheck.setText("ロビーのチャットを読み上げる");
+			readLobbyChatCheck.setText("로비의 채팅을 읽어 내린다");
 			readLobbyChatCheck.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, 2, 1));
 			readLobbyChatCheck.setSelection(readLobbyChat);
 
 			readPrivateChatCheck = new Button(container, SWT.CHECK | SWT.FLAT);
-			readPrivateChatCheck.setText("プライベートメッセージを読み上げる");
+			readPrivateChatCheck.setText("프라이빗 메세지를 읽어 내린다");
 			readPrivateChatCheck.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, 2, 1));
 			readPrivateChatCheck.setSelection(readPrivateChat);
 
@@ -296,7 +296,7 @@ public class BouyomiChanPlugin implements IPlugin, IPluginConfigPageProvider {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String message = "棒読みちゃんてすと";
+		String message = "봉읽기 와";
 		InetSocketAddress address = new InetSocketAddress(50001);
 
 		BouyomiChanPlugin bc = new BouyomiChanPlugin();

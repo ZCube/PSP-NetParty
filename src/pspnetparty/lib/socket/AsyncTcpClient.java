@@ -144,7 +144,7 @@ public class AsyncTcpClient implements IClient {
 				}
 			}
 
-			// logger.log("TCP Client Ping送信: p=" + pingCount + " d=" +
+			// logger.log("TCP Client Ping 송신: p=" + pingCount + " d=" +
 			// disconnectCount);
 			Thread.sleep(IProtocol.PING_INTERVAL);
 		}
@@ -374,7 +374,7 @@ public class AsyncTcpClient implements IClient {
 
 			@Override
 			public IProtocolDriver createDriver(final ISocketConnection connection) {
-				System.out.println("接続しました: " + connection.getRemoteAddress());
+				System.out.println("접속했던: " + connection.getRemoteAddress());
 
 				Thread sendThread = new Thread(new Runnable() {
 					private String makeLongString(char c, int length) {
@@ -420,18 +420,18 @@ public class AsyncTcpClient implements IClient {
 					@Override
 					public boolean process(PacketData data) {
 						String msg = data.getMessage();
-						System.out.println("受信(" + msg.length() + ")");
+						System.out.println("수신(" + msg.length() + ")");
 						return true;
 					}
 
 					@Override
 					public void connectionDisconnected() {
-						System.out.println("切断しました");
+						System.out.println("절단 했습니다");
 					}
 
 					@Override
 					public void errorProtocolNumber(String number) {
-						System.out.println("プロトコルエラー: " + number);
+						System.out.println("프로토콜 에러: " + number);
 					}
 				};
 			}

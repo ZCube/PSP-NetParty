@@ -44,7 +44,7 @@ public class LogWindow {
 		// shell = new Shell((Shell) null, SWT.SHELL_TRIM | SWT.TOOL);
 		shell = new Shell(parentShell, SWT.SHELL_TRIM | SWT.TOOL);
 
-		shell.setText("ログ");
+		shell.setText("로그");
 		try {
 			shell.setImages(application.getShellImages());
 		} catch (RuntimeException e) {

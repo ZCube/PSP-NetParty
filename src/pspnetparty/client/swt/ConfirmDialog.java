@@ -34,7 +34,7 @@ public class ConfirmDialog extends Dialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("PSP NetPartyを終了します");
+		newShell.setText("PSP NetParty를 종료합니다");
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class ConfirmDialog extends Dialog {
 		Composite composite = (Composite) super.createDialogArea(parent);
 
 		Label label = new Label(composite, SWT.NONE);
-		label.setText("PSP NetPartyを終了します。よろしいですか？");
+		label.setText("PSP NetParty를 종료합니다. 좋습니까? ");
 
 		return composite;
 	}

@@ -84,13 +84,13 @@ public class TestJfacePreference {
 			@Override
 			protected void configureShell(Shell newShell) {
 				super.configureShell(newShell);
-				newShell.setText("設定");
+				newShell.setText("설정");
 			}
 
 			@Override
 			protected void initializeBounds() {
 				super.initializeBounds();
-				getButton(CANCEL).setText("キャンセル");
+				getButton(CANCEL). setText("캔슬");
 			}
 		};
 		//dialog.setPreferenceStore(store);
@@ -137,23 +137,23 @@ class TestPage extends FieldEditorPreferencePage {
 	@Override
 	protected void createFieldEditors() {
 		// Add a boolean field
-		BooleanFieldEditor bfe = new BooleanFieldEditor("myBoolean", "確認する", getFieldEditorParent());
+		BooleanFieldEditor bfe = new BooleanFieldEditor("myBoolean", "확인하는", getFieldEditorParent());
 		addField(bfe);
 
 		// Add a color field
-		ColorFieldEditor cfe = new ColorFieldEditor("myColor", "全体の色:", getFieldEditorParent());
+		ColorFieldEditor cfe = new ColorFieldEditor("myColor", "전체의 색:", getFieldEditorParent());
 		addField(cfe);
 
 		// Add a directory field
-		DirectoryFieldEditor dfe = new DirectoryFieldEditor("myDirectory", "フォルダ:", getFieldEditorParent());
+		DirectoryFieldEditor dfe = new DirectoryFieldEditor("myDirectory", "폴더:", getFieldEditorParent());
 		addField(dfe);
 
 		// Add a file field
-		FileFieldEditor ffe = new FileFieldEditor("myFile", "ファイル:", getFieldEditorParent());
+		FileFieldEditor ffe = new FileFieldEditor("myFile", "파일:", getFieldEditorParent());
 		addField(ffe);
 
 		// Add a font field
-		FontFieldEditor fontFe = new FontFieldEditor("myFont", "全体のフォント:", getFieldEditorParent());
+		FontFieldEditor fontFe = new FontFieldEditor("myFont", "전체의 폰트:", getFieldEditorParent());
 		addField(fontFe);
 
 		// Add a radio group field
@@ -170,8 +170,8 @@ class TestPage extends FieldEditorPreferencePage {
 	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		getApplyButton().setText("適用する");
-		getDefaultsButton().setText("デフォルトに戻す");
+		getApplyButton(). setText("적용한다");
+		getDefaultsButton(). setText("디폴트에 되돌린다");
 	}
 
 	private Button revertButton;
@@ -183,7 +183,7 @@ class TestPage extends FieldEditorPreferencePage {
 		// layout.makeColumnsEqualWidth = true;
 		//
 		// revertButton = new Button(parent, SWT.PUSH);
-		// revertButton.setText("編集前に戻す");
+		// revertButton.setText("편집전에 되돌린다");
 		// revertButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
 		// false));
 		// revertButton.addListener(SWT.Selection, new Listener() {
@@ -273,7 +273,7 @@ class TestPage2 extends PreferencePage {
 	private void checkValid() {
 		setValid(!checkOne.getSelection());
 		if (checkOne.getSelection()) {
-			setErrorMessage("エラーがあります");
+			setErrorMessage("에러가 있습니다");
 			setDescription("foo Bar");
 		} else {
 			setErrorMessage(null);

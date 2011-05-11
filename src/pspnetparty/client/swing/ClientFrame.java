@@ -84,17 +84,17 @@ public class ClientFrame extends JFrame {
 		JPanel arenaMainLeftServerPanel = new JPanel();
 		arenaMainLeftServerPanel.setLayout(new BorderLayout(5, 0));
 		arenaMainLeftServerPanel.setBorder(new EmptyBorder(5, 3, 3, 3));
-		arenaMainLeftServerPanel.add(new JLabel("アドレス"), BorderLayout.WEST);
+		arenaMainLeftServerPanel.add(new JLabel("주소"), BorderLayout.WEST);
 
 		JComboBox serverAddressComboBox = new JComboBox();
 		serverAddressComboBox.setMinimumSize(new Dimension(100, serverAddressComboBox.getSize().height));
 		arenaMainLeftServerPanel.add(serverAddressComboBox, BorderLayout.CENTER);
 
-		arenaMainLeftServerPanel.add(new JButton("ログイン"), BorderLayout.EAST);
+		arenaMainLeftServerPanel.add(new JButton("로그인"), BorderLayout.EAST);
 
 		arenaMainLeftPanel.add(arenaMainLeftServerPanel, BorderLayout.NORTH);
 
-		String[] roomListColumns = { "部屋主", "鍵", "部屋名", "定員" };
+		String[] roomListColumns = { "방주", "열쇠", "방명", "정원" };
 
 		TableModel tableModel = new TableModel() {
 			@Override
@@ -162,17 +162,17 @@ public class ClientFrame extends JFrame {
 		arenaChatLogScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		arenaMainViewPane.setLeftComponent(arenaChatLogScrollPane);
 
-		JTable arenaPlayerListTable = new JTable(new String[][] {}, new String[] { "名前" });
+		JTable arenaPlayerListTable = new JTable(new String[][] {}, new String[] { "이름" });
 		JScrollPane arenaPlayerListPane = new JScrollPane(arenaPlayerListTable);
 		arenaMainViewPane.setRightComponent(arenaPlayerListPane);
 
 		JPanel arenaChatPanel = new JPanel(new BorderLayout());
 		arenaChatPanel.add(new JTextField(), BorderLayout.CENTER);
-		arenaChatPanel.add(new JButton("発言"), BorderLayout.EAST);
+		arenaChatPanel.add(new JButton("발언"), BorderLayout.EAST);
 
 		arenaMainRightPanel.add(arenaChatPanel, BorderLayout.SOUTH);
 
-		mainTabPane.add("アリーナロビー", arenaMainPane);
+		mainTabPane.add("아레나 로비", arenaMainPane);
 
 		JSplitPane roomMainPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
 		roomMainPane.setDividerLocation(200);
@@ -184,12 +184,12 @@ public class ClientFrame extends JFrame {
 		roomMainLeftPanel.setMinimumSize(new Dimension(200, 100));
 		roomMainLeftPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		JButton roomInfoExitButton = new JButton("部屋を閉じる");
+		JButton roomInfoExitButton = new JButton("방을 닫는다");
 		springLayout.putConstraint(SpringLayout.NORTH, roomInfoExitButton, 1, SpringLayout.NORTH, roomMainLeftPanel);
 		springLayout.putConstraint(SpringLayout.WEST, roomInfoExitButton, 0, SpringLayout.WEST, roomMainLeftPanel);
 		roomMainLeftPanel.add(roomInfoExitButton);
 
-		JButton roomInfoMakeButton = new JButton("部屋を作成");
+		JButton roomInfoMakeButton = new JButton("방을 작성");
 		springLayout.putConstraint(SpringLayout.NORTH, roomInfoMakeButton, 1, SpringLayout.NORTH, roomMainLeftPanel);
 		springLayout.putConstraint(SpringLayout.EAST, roomInfoMakeButton, 0, SpringLayout.EAST, roomMainLeftPanel);
 		roomMainLeftPanel.add(roomInfoMakeButton);
@@ -204,7 +204,7 @@ public class ClientFrame extends JFrame {
 
 		insets = new Insets(1, 1, 1, 1);
 
-		JLabel roomInfoFormMasterLabel = new JLabel("部屋主");
+		JLabel roomInfoFormMasterLabel = new JLabel("방주");
 		gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -222,7 +222,7 @@ public class ClientFrame extends JFrame {
 		gridBagLayout.setConstraints(roomInfoFormMasterText, gbc);
 		roomInfoFormPanel.add(roomInfoFormMasterText);
 
-		JLabel roomInfoFormTitleLabel = new JLabel("部屋名");
+		JLabel roomInfoFormTitleLabel = new JLabel("방명");
 		gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 1;
@@ -240,7 +240,7 @@ public class ClientFrame extends JFrame {
 		gridBagLayout.setConstraints(roomInfoFormTitleText, gbc);
 		roomInfoFormPanel.add(roomInfoFormTitleText);
 
-		JLabel roomInfoFormPasswordLabel = new JLabel("パスワード");
+		JLabel roomInfoFormPasswordLabel = new JLabel("패스워드");
 		gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 2;
@@ -258,7 +258,7 @@ public class ClientFrame extends JFrame {
 		gridBagLayout.setConstraints(roomInfoFormPasswordText, gbc);
 		roomInfoFormPanel.add(roomInfoFormPasswordText);
 
-		JLabel roomInfoFormMaxPlayersLabel = new JLabel("制限人数");
+		JLabel roomInfoFormMaxPlayersLabel = new JLabel("제한 인원수");
 		gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 3;
@@ -275,7 +275,7 @@ public class ClientFrame extends JFrame {
 		gridBagLayout.setConstraints(roomInfoFormMaxPlayersSpiner, gbc);
 		roomInfoFormPanel.add(roomInfoFormMaxPlayersSpiner);
 
-		JLabel roomInfoDescriptionLabel = new JLabel("部屋の紹介・備考");
+		JLabel roomInfoDescriptionLabel = new JLabel("방의 소개·비고");
 		springLayout.putConstraint(SpringLayout.NORTH, roomInfoDescriptionLabel, 10, SpringLayout.SOUTH, roomInfoFormPanel);
 		springLayout.putConstraint(SpringLayout.WEST, roomInfoDescriptionLabel, 5, SpringLayout.WEST, roomInfoFormPanel);
 		roomMainLeftPanel.add(roomInfoDescriptionLabel);
@@ -294,9 +294,9 @@ public class ClientFrame extends JFrame {
 
 		JPanel roomWlanAdaptorPanel = new JPanel(new BorderLayout(4, 0));
 		roomWlanAdaptorPanel.setBorder(new EmptyBorder(3, 3, 2, 3));
-		roomWlanAdaptorPanel.add(new JLabel("無線LANアダプタ"), BorderLayout.WEST);
+		roomWlanAdaptorPanel.add(new JLabel("무선 LAN 어댑터"), BorderLayout.WEST);
 		roomWlanAdaptorPanel.add(new JComboBox(), BorderLayout.CENTER);
-		roomWlanAdaptorPanel.add(new JButton("PSPと通信開始"), BorderLayout.EAST);
+		roomWlanAdaptorPanel.add(new JButton("PSP와 통신 개시"), BorderLayout.EAST);
 
 		roomMainRightPanel.add(roomWlanAdaptorPanel, BorderLayout.NORTH);
 
@@ -314,7 +314,7 @@ public class ClientFrame extends JFrame {
 		roomPlayerViewPane.setDividerLocation(140);
 		roomChatViewPane.setRightComponent(roomPlayerViewPane);
 
-		JTable roomPlayerListTable = new JTable(new String[][] {}, new String[] { "名前", "PING" });
+		JTable roomPlayerListTable = new JTable(new String[][] {}, new String[] { "이름", "PING" });
 		JScrollPane roomPlayerListPane = new JScrollPane(roomPlayerListTable);
 		roomPlayerViewPane.setLeftComponent(roomPlayerListPane);
 
@@ -327,8 +327,8 @@ public class ClientFrame extends JFrame {
 
 		JPanel myPspMonitorHeaderPanel = new JPanel(new BorderLayout());
 		myPspMonitorHeaderPanel.setBorder(new EmptyBorder(0, 3, 0, 1));
-		myPspMonitorHeaderPanel.add(new JLabel("自分のPSP"), BorderLayout.WEST);
-		JButton myPspMonitorClearButton = new JButton("クリア");
+		myPspMonitorHeaderPanel.add(new JLabel("자신의 PSP"), BorderLayout.WEST);
+		JButton myPspMonitorClearButton = new JButton("클리어");
 		myPspMonitorClearButton.setPreferredSize(new Dimension(70, 18));
 		myPspMonitorHeaderPanel.add(myPspMonitorClearButton, BorderLayout.EAST);
 		myPspMonitorPanel.add(myPspMonitorHeaderPanel, BorderLayout.NORTH);
@@ -343,8 +343,8 @@ public class ClientFrame extends JFrame {
 
 		JPanel remotePspMonitorHeaderPanel = new JPanel(new BorderLayout());
 		remotePspMonitorHeaderPanel.setBorder(new EmptyBorder(0, 3, 0, 1));
-		remotePspMonitorHeaderPanel.add(new JLabel("相手のPSP"), BorderLayout.WEST);
-		JButton remotePspMonitorClearButton = new JButton("クリア");
+		remotePspMonitorHeaderPanel.add(new JLabel("상대의 PSP"), BorderLayout.WEST);
+		JButton remotePspMonitorClearButton = new JButton("클리어");
 		remotePspMonitorClearButton.setPreferredSize(new Dimension(70, 18));
 		remotePspMonitorHeaderPanel.add(remotePspMonitorClearButton, BorderLayout.EAST);
 		remotePspMonitorPanel.add(remotePspMonitorHeaderPanel, BorderLayout.NORTH);
@@ -357,16 +357,16 @@ public class ClientFrame extends JFrame {
 
 		JPanel roomChatPanel = new JPanel(new BorderLayout());
 		roomChatPanel.add(new JTextField(), BorderLayout.CENTER);
-		roomChatPanel.add(new JButton("発言"), BorderLayout.EAST);
+		roomChatPanel.add(new JButton("발언"), BorderLayout.EAST);
 
 		roomMainRightPanel.add(roomChatPanel, BorderLayout.SOUTH);
 
-		mainTabPane.add("プレイルーム", roomMainPane);
+		mainTabPane.add("플레이 룸", roomMainPane);
 
 		springLayout = new SpringLayout();
 		JPanel configPanel = new JPanel(springLayout);
 
-		JLabel configUserNameLabel = new JLabel("ユーザー名");
+		JLabel configUserNameLabel = new JLabel("유저명");
 		springLayout.putConstraint(SpringLayout.NORTH, configUserNameLabel, 10, SpringLayout.NORTH, configPanel);
 		springLayout.putConstraint(SpringLayout.WEST, configUserNameLabel, 5, SpringLayout.WEST, configPanel);
 		configPanel.add(configUserNameLabel);
@@ -378,7 +378,7 @@ public class ClientFrame extends JFrame {
 
 		configPanel.add(configUserNameTextField);
 
-		JCheckBox configNotShowRoomEnterExitLogCheck = new JCheckBox("チャットログに入退室ログを表示しない");
+		JCheckBox configNotShowRoomEnterExitLogCheck = new JCheckBox("채팅 로그에 입퇴실 로그를 표시하지 않는다");
 		springLayout.putConstraint(SpringLayout.NORTH, configNotShowRoomEnterExitLogCheck, 3, SpringLayout.SOUTH, configUserNameTextField);
 		configPanel.add(configNotShowRoomEnterExitLogCheck);
 
@@ -407,22 +407,22 @@ public class ClientFrame extends JFrame {
 			configThemeSelectorPanel.add(button);
 		}
 
-		mainTabPane.add("設定", configPanel);
+		mainTabPane.add("설정", configPanel);
 
 		JTextPane logTextPane = new JTextPane();
 		logTextPane.setEditable(false);
 		JScrollPane logTextScrollPane = new JScrollPane(logTextPane);
 		logTextScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-		mainTabPane.add("ログ", logTextScrollPane);
+		mainTabPane.add("로그", logTextScrollPane);
 
 		add(mainTabPane, BorderLayout.CENTER);
 
 		JPanel statusBarPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		add(statusBarPanel, BorderLayout.SOUTH);
-		statusBarPanel.add(new JLabel("サーバーアドレス"));
-		statusBarPanel.add(new JLabel("サーバーステータス"));
-		statusBarPanel.add(new JLabel("トラフィック"));
+		statusBarPanel.add(new JLabel("서버 주소"));
+		statusBarPanel.add(new JLabel("서버 스테이터스"));
+		statusBarPanel.add(new JLabel("트래픽"));
 
 		setSize(750, 500);
 		setMinimumSize(new Dimension(400, 300));

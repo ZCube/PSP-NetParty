@@ -52,7 +52,7 @@ public class SearchServerSelectDialog extends Dialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("検索サーバー選択");
+		newShell.setText("검색 서버 선택");
 	}
 
 	@Override
@@ -67,10 +67,10 @@ public class SearchServerSelectDialog extends Dialog {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
 		TableColumn addressColumn = new TableColumn(table, SWT.LEFT);
-		addressColumn.setText("アドレス");
+		addressColumn.setText("주소");
 
 		TableColumn useRateColumn = new TableColumn(table, SWT.RIGHT);
-		useRateColumn.setText("利用率");
+		useRateColumn.setText("이용율");
 
 		viewer.setContentProvider(new ArrayContentProvider());
 		viewer.setLabelProvider(SearchServerInfo.LABEL_PROVIDER);
@@ -108,7 +108,7 @@ public class SearchServerSelectDialog extends Dialog {
 		Control control = super.createButtonBar(parent);
 
 		Button ok = getButton(OK);
-		ok.setText("ログイン");
+		ok.setText("로그인");
 
 		return control;
 	}

@@ -98,7 +98,7 @@ public class AppearancePage extends PreferencePage {
 	private Spinner spinnerNameRulerWidth;
 
 	public AppearancePage(IApplication application) {
-		super("フォントと色");
+		super("폰트와 색");
 		this.application = application;
 		iniAppearance = application.getAppearance();
 		// noDefaultAndApplyButton();
@@ -121,7 +121,7 @@ public class AppearancePage extends PreferencePage {
 		container.setLayout(gridLayout);
 
 		Group groupFont = new Group(container, SWT.SHADOW_IN);
-		groupFont.setText("フォント");
+		groupFont.setText("폰트");
 		gridLayout = new GridLayout(3, false);
 		gridLayout.horizontalSpacing = 8;
 		gridLayout.verticalSpacing = 5;
@@ -132,7 +132,7 @@ public class AppearancePage extends PreferencePage {
 		groupFont.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, true, false));
 
 		Label labelFontGlobal = new Label(groupFont, SWT.NONE);
-		labelFontGlobal.setText("全体:");
+		labelFontGlobal.setText("전체:");
 		labelFontGlobal.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
 		sampleFontGlobal = new Text(groupFont, SWT.BORDER | SWT.READ_ONLY);
@@ -142,7 +142,7 @@ public class AppearancePage extends PreferencePage {
 		sampleFontGlobal.setText(fontToString(fontData));
 
 		Button buttonFontGlobal = new Button(groupFont, SWT.PUSH);
-		buttonFontGlobal.setText("選択");
+		buttonFontGlobal.setText("선택");
 		buttonFontGlobal.setLayoutData(new GridData(convertWidthInCharsToPixels(12), SWT.DEFAULT));
 		buttonFontGlobal.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -158,7 +158,7 @@ public class AppearancePage extends PreferencePage {
 		});
 
 		Label labelFontLog = new Label(groupFont, SWT.NONE);
-		labelFontLog.setText("ログ:");
+		labelFontLog.setText("로그:");
 		labelFontLog.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
 		sampleFontLog = new Text(groupFont, SWT.BORDER | SWT.READ_ONLY);
@@ -168,7 +168,7 @@ public class AppearancePage extends PreferencePage {
 		sampleFontLog.setText(fontToString(fontData));
 
 		Button buttonFontLog = new Button(groupFont, SWT.PUSH);
-		buttonFontLog.setText("選択");
+		buttonFontLog.setText("선택");
 		buttonFontLog.setLayoutData(new GridData(convertWidthInCharsToPixels(12), SWT.DEFAULT));
 		buttonFontLog.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -184,7 +184,7 @@ public class AppearancePage extends PreferencePage {
 		});
 
 		Label labelFontChat = new Label(groupFont, SWT.NONE);
-		labelFontChat.setText("チャット入力:");
+		labelFontChat.setText("채팅 입력:");
 		labelFontChat.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
 		sampleFontChat = new Text(groupFont, SWT.BORDER | SWT.READ_ONLY);
@@ -194,7 +194,7 @@ public class AppearancePage extends PreferencePage {
 		sampleFontChat.setText(fontToString(fontData));
 
 		Button buttonFontChat = new Button(groupFont, SWT.PUSH);
-		buttonFontChat.setText("選択");
+		buttonFontChat.setText("선택");
 		buttonFontChat.setLayoutData(new GridData(convertWidthInCharsToPixels(12), SWT.DEFAULT));
 		buttonFontChat.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -210,7 +210,7 @@ public class AppearancePage extends PreferencePage {
 		});
 
 		Group groupColorGlobal = new Group(container, SWT.SHADOW_IN);
-		groupColorGlobal.setText("全体的な色");
+		groupColorGlobal.setText("전체적인 색");
 		groupColorGlobal.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, false, false));
 		gridLayout = new GridLayout(6, false);
 		gridLayout.horizontalSpacing = 5;
@@ -219,7 +219,7 @@ public class AppearancePage extends PreferencePage {
 		gridLayout.marginHeight = 5;
 		groupColorGlobal.setLayout(gridLayout);
 
-		new Label(groupColorGlobal, SWT.NONE).setText("背景");
+		new Label(groupColorGlobal, SWT.NONE). setText("배경");
 
 		selectorColorBackground = new ColorSelector(groupColorGlobal);
 		selectorColorBackground.setColorValue(iniAppearance.getColorBackground().getRGB());
@@ -230,7 +230,7 @@ public class AppearancePage extends PreferencePage {
 			}
 		});
 
-		new Label(groupColorGlobal, SWT.NONE).setText("文字");
+		new Label(groupColorGlobal, SWT.NONE). setText("문자");
 
 		selectorColorForeground = new ColorSelector(groupColorGlobal);
 		selectorColorForeground.setColorValue(iniAppearance.getColorForeground().getRGB());
@@ -241,7 +241,7 @@ public class AppearancePage extends PreferencePage {
 			}
 		});
 
-		new Label(groupColorGlobal, SWT.NONE).setText("ログ背景");
+		new Label(groupColorGlobal, SWT.NONE). setText("로그 배경");
 
 		selectorColorLogBackground = new ColorSelector(groupColorGlobal);
 		selectorColorLogBackground.setColorValue(iniAppearance.getColorLogBackground().getRGB());
@@ -253,7 +253,7 @@ public class AppearancePage extends PreferencePage {
 		});
 
 		Group groupColorLog = new Group(container, SWT.SHADOW_IN);
-		groupColorLog.setText("ログの色");
+		groupColorLog.setText("로그의 색");
 		groupColorLog.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, false, false));
 		gridLayout = new GridLayout(8, false);
 		gridLayout.horizontalSpacing = 5;
@@ -262,7 +262,7 @@ public class AppearancePage extends PreferencePage {
 		gridLayout.marginHeight = 5;
 		groupColorLog.setLayout(gridLayout);
 
-		new Label(groupColorLog, SWT.NONE).setText("情報");
+		new Label(groupColorLog, SWT.NONE). setText("정보");
 
 		selectorColorLogInfo = new ColorSelector(groupColorLog);
 		selectorColorLogInfo.setColorValue(iniAppearance.getColorLogInfo().getRGB());
@@ -273,7 +273,7 @@ public class AppearancePage extends PreferencePage {
 			}
 		});
 
-		new Label(groupColorLog, SWT.NONE).setText("エラー");
+		new Label(groupColorLog, SWT.NONE). setText("에러");
 
 		selectorColorLogError = new ColorSelector(groupColorLog);
 		selectorColorLogError.setColorValue(iniAppearance.getColorLogError().getRGB());
@@ -284,7 +284,7 @@ public class AppearancePage extends PreferencePage {
 			}
 		});
 
-		new Label(groupColorLog, SWT.NONE).setText("サーバー");
+		new Label(groupColorLog, SWT.NONE). setText("서버");
 
 		selectorColorLogServer = new ColorSelector(groupColorLog);
 		selectorColorLogServer.setColorValue(iniAppearance.getColorLogServer().getRGB());
@@ -295,7 +295,7 @@ public class AppearancePage extends PreferencePage {
 			}
 		});
 
-		new Label(groupColorLog, SWT.NONE).setText("ルーム");
+		new Label(groupColorLog, SWT.NONE). setText("룸");
 
 		selectorColorLogRoom = new ColorSelector(groupColorLog);
 		selectorColorLogRoom.setColorValue(iniAppearance.getColorLogRoom().getRGB());
@@ -307,7 +307,7 @@ public class AppearancePage extends PreferencePage {
 		});
 
 		Group groupColorChat = new Group(container, SWT.SHADOW_IN);
-		groupColorChat.setText("チャットログの色");
+		groupColorChat.setText("채팅 로그의 색");
 		groupColorChat.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, false, false));
 		gridLayout = new GridLayout(6, false);
 		gridLayout.horizontalSpacing = 5;
@@ -316,7 +316,7 @@ public class AppearancePage extends PreferencePage {
 		gridLayout.marginHeight = 5;
 		groupColorChat.setLayout(gridLayout);
 
-		new Label(groupColorChat, SWT.NONE).setText("自分");
+		new Label(groupColorChat, SWT.NONE). setText("자신");
 
 		selectorColorChatMine = new ColorSelector(groupColorChat);
 		selectorColorChatMine.setColorValue(iniAppearance.getColorChatMine().getRGB());
@@ -327,7 +327,7 @@ public class AppearancePage extends PreferencePage {
 			}
 		});
 
-		new Label(groupColorChat, SWT.NONE).setText("他の人");
+		new Label(groupColorChat, SWT.NONE). setText("다른 사람");
 
 		selectorColorChatOthers = new ColorSelector(groupColorChat);
 		selectorColorChatOthers.setColorValue(iniAppearance.getColorChatOthers().getRGB());
@@ -338,7 +338,7 @@ public class AppearancePage extends PreferencePage {
 			}
 		});
 
-		new Label(groupColorChat, SWT.NONE).setText("プライベート");
+		new Label(groupColorChat, SWT.NONE). setText("프라이빗");
 
 		selectorColorChatPrivate = new ColorSelector(groupColorChat);
 		selectorColorChatPrivate.setColorValue(iniAppearance.getColorChatPrivate().getRGB());
@@ -350,7 +350,7 @@ public class AppearancePage extends PreferencePage {
 		});
 
 		Group groupLogRuler = new Group(container, SWT.SHADOW_IN);
-		groupLogRuler.setText("ログルーラー");
+		groupLogRuler.setText("로그 루라-");
 		groupLogRuler.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, false, false));
 		gridLayout = new GridLayout(8, false);
 		gridLayout.horizontalSpacing = 5;
@@ -359,10 +359,10 @@ public class AppearancePage extends PreferencePage {
 		gridLayout.marginHeight = 5;
 		groupLogRuler.setLayout(gridLayout);
 
-		new Label(groupLogRuler, SWT.NONE).setText("タイムスタンプ:");
+		new Label(groupLogRuler, SWT.NONE). setText("타임 스탬프:");
 
 		Label labelTimestampRulerBG = new Label(groupLogRuler, SWT.NONE);
-		labelTimestampRulerBG.setText("背景");
+		labelTimestampRulerBG.setText("배경");
 		labelTimestampRulerBG.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
 		selectorColorTimestampRulerBG = new ColorSelector(groupLogRuler);
@@ -374,7 +374,7 @@ public class AppearancePage extends PreferencePage {
 			}
 		});
 
-		new Label(groupLogRuler, SWT.NONE).setText("文字");
+		new Label(groupLogRuler, SWT.NONE). setText("문자");
 
 		selectorColorTimestampRulerFG = new ColorSelector(groupLogRuler);
 		selectorColorTimestampRulerFG.setColorValue(iniAppearance.getColorLogTimestampRulerFG().getRGB());
@@ -386,7 +386,7 @@ public class AppearancePage extends PreferencePage {
 		});
 
 		Label labelTimeStampRulerWidth = new Label(groupLogRuler, SWT.NONE);
-		labelTimeStampRulerWidth.setText("幅");
+		labelTimeStampRulerWidth.setText("폭");
 		gridData = new GridData();
 		gridData.horizontalIndent = 10;
 		labelTimeStampRulerWidth.setLayoutData(gridData);
@@ -400,12 +400,12 @@ public class AppearancePage extends PreferencePage {
 				timestampRulerWidth = spinnerTimestampRulerWidth.getSelection();
 			}
 		});
-		new Label(groupLogRuler, SWT.NONE).setText("ピクセル");
+		new Label(groupLogRuler, SWT.NONE). setText("픽셀");
 
-		new Label(groupLogRuler, SWT.NONE).setText("名前:");
+		new Label(groupLogRuler, SWT.NONE). setText("이름:");
 
 		Label labelNameRulerBG = new Label(groupLogRuler, SWT.NONE);
-		labelNameRulerBG.setText("背景");
+		labelNameRulerBG.setText("배경");
 		labelNameRulerBG.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
 		selectorColorNameRulerBG = new ColorSelector(groupLogRuler);
@@ -417,7 +417,7 @@ public class AppearancePage extends PreferencePage {
 			}
 		});
 
-		new Label(groupLogRuler, SWT.NONE).setText("文字");
+		new Label(groupLogRuler, SWT.NONE). setText("문자");
 
 		selectorColorNameRulerFG = new ColorSelector(groupLogRuler);
 		selectorColorNameRulerFG.setColorValue(iniAppearance.getColorLogNameRulerFG().getRGB());
@@ -429,7 +429,7 @@ public class AppearancePage extends PreferencePage {
 		});
 
 		Label labelNameRulerWidth = new Label(groupLogRuler, SWT.NONE);
-		labelNameRulerWidth.setText("幅");
+		labelNameRulerWidth.setText("폭");
 		gridData = new GridData();
 		gridData.horizontalIndent = 10;
 		labelNameRulerWidth.setLayoutData(gridData);
@@ -443,7 +443,7 @@ public class AppearancePage extends PreferencePage {
 				nameRulerWidth = spinnerNameRulerWidth.getSelection();
 			}
 		});
-		new Label(groupLogRuler, SWT.NONE).setText("ピクセル");
+		new Label(groupLogRuler, SWT.NONE). setText("픽셀");
 
 		return container;
 	}
@@ -451,8 +451,8 @@ public class AppearancePage extends PreferencePage {
 	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		getApplyButton().setText("適用する");
-		getDefaultsButton().setText("デフォルトに戻す");
+		getApplyButton(). setText("적용한다");
+		getDefaultsButton(). setText("디폴트에 되돌린다");
 	}
 
 	private static String fontToString(FontData data) {

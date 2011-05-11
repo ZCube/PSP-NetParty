@@ -443,7 +443,7 @@ public class PortalEngine {
 
 		@Override
 		public String getTypeName() {
-			return "ロビーサーバー";
+			return "로비 서버";
 		}
 
 		@Override
@@ -453,7 +453,7 @@ public class PortalEngine {
 			lobbyServerConnections.put(driver.address, connection);
 			lobbyServerRetryAddresses.remove(driver.address);
 
-			logger.log(getTypeName() + "と接続しました: " + connection.getRemoteAddress());
+			logger.log(getTypeName() + "와 접속했던: " + connection.getRemoteAddress());
 			return driver;
 		}
 	}
@@ -480,9 +480,9 @@ public class PortalEngine {
 				RetryInfo info = new RetryInfo(socketAddress);
 				lobbyServerRetryAddresses.put(address, info);
 
-				logger.log(lobbyServerProtocol.getTypeName() + "との接続が切断されました: " + socketAddress);
+				logger.log(lobbyServerProtocol.getTypeName() + "와의 접속이 절단 되었던: " + socketAddress);
 			} else {
-				logger.log(lobbyServerProtocol.getTypeName() + "との接続を切断しました: " + socketAddress);
+				logger.log(lobbyServerProtocol.getTypeName() + "와의 접속을 절단 했던: " + socketAddress);
 			}
 		}
 
@@ -587,7 +587,7 @@ public class PortalEngine {
 
 		@Override
 		public String getTypeName() {
-			return "検索サーバー";
+			return "검색 서버";
 		}
 
 		@Override
@@ -597,7 +597,7 @@ public class PortalEngine {
 			searchServerConnections.put(driver.address, connection);
 			searchServerRetryAddresses.remove(driver.address);
 
-			logger.log(getTypeName() + "と接続しました: " + connection.getRemoteAddress());
+			logger.log(getTypeName() + "와 접속했던: " + connection.getRemoteAddress());
 			return driver;
 		}
 	}
@@ -625,9 +625,9 @@ public class PortalEngine {
 				RetryInfo info = new RetryInfo(socketAddress);
 				searchServerRetryAddresses.put(address, info);
 
-				logger.log(searchServerProtocol.getTypeName() + "との接続が切断されました: " + socketAddress);
+				logger.log(searchServerProtocol.getTypeName() + "와의 접속이 절단 되었던: " + socketAddress);
 			} else {
-				logger.log(searchServerProtocol.getTypeName() + "との接続を切断しました: " + socketAddress);
+				logger.log(searchServerProtocol.getTypeName() + "와의 접속을 절단 했던: " + socketAddress);
 			}
 		}
 
@@ -741,7 +741,7 @@ public class PortalEngine {
 
 		@Override
 		public String getTypeName() {
-			return "ルームサーバー";
+			return "룸 서버";
 		}
 
 		@Override
@@ -751,7 +751,7 @@ public class PortalEngine {
 			roomServerConnections.put(driver.address, connection);
 			roomServerRetryAddresses.remove(driver.address);
 
-			logger.log(getTypeName() + "と接続しました: " + connection.getRemoteAddress());
+			logger.log(getTypeName() + "와 접속했던: " + connection.getRemoteAddress());
 			return driver;
 		}
 	}
@@ -792,9 +792,9 @@ public class PortalEngine {
 				RetryInfo info = new RetryInfo(socketAddress);
 				roomServerRetryAddresses.put(address, info);
 
-				logger.log(roomServerProtocol.getTypeName() + "との接続が切断されました: " + socketAddress);
+				logger.log(roomServerProtocol.getTypeName() + "와의 접속이 절단 되었던: " + socketAddress);
 			} else {
-				logger.log(roomServerProtocol.getTypeName() + "との接続を切断しました: " + socketAddress);
+				logger.log(roomServerProtocol.getTypeName() + "와의 접속을 절단 했던: " + socketAddress);
 			}
 		}
 

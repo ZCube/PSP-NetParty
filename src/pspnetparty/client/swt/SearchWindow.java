@@ -110,7 +110,7 @@ public class SearchWindow {
 
 		shell = new Shell(SWT.SHELL_TRIM);// | SWT.TOOL);
 
-		shell.setText("部屋検索");
+		shell.setText("방검색");
 		try {
 			shell.setImages(application.getShellImages());
 		} catch (RuntimeException e) {
@@ -156,22 +156,22 @@ public class SearchWindow {
 		application.initControl(serverAddressLabel);
 
 		searchFormHasPassword = new Button(formOptionContainer, SWT.CHECK | SWT.FLAT);
-		searchFormHasPassword.setText("鍵付き");
+		searchFormHasPassword.setText("열쇠 첨부");
 		application.initControl(searchFormHasPassword);
 
 		searchFormOnlyVacant = new Button(formOptionContainer, SWT.CHECK | SWT.FLAT);
-		searchFormOnlyVacant.setText("満室非表示");
+		searchFormOnlyVacant.setText("만실비표시");
 		searchFormOnlyVacant.setSelection(true);
 		application.initControl(searchFormOnlyVacant);
 
 		searchFormAutoQuery = new Button(formOptionContainer, SWT.TOGGLE);
-		searchFormAutoQuery.setText("検索更新オン");
+		searchFormAutoQuery.setText("검색 갱신 온");
 		searchFormAutoQuery.setSelection(true);
 		searchFormAutoQuery.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 		application.initControl(searchFormAutoQuery);
 
 		Label formMasterNameLabel = new Label(formContainer, SWT.NONE);
-		formMasterNameLabel.setText("部屋主");
+		formMasterNameLabel.setText("방주");
 		formMasterNameLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 		application.initControl(formMasterNameLabel);
 
@@ -180,7 +180,7 @@ public class SearchWindow {
 		application.initControl(searchFormMasterNameCombo);
 
 		Label formMasterNameNgLabel = new Label(formContainer, SWT.NONE);
-		formMasterNameNgLabel.setText("除外");
+		formMasterNameNgLabel.setText("제외");
 		formMasterNameNgLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 		application.initControl(formMasterNameNgLabel);
 
@@ -189,7 +189,7 @@ public class SearchWindow {
 		application.initControl(searchFormMasterNameNgCombo);
 
 		Label formTitleLabel = new Label(formContainer, SWT.NONE);
-		formTitleLabel.setText("部屋名");
+		formTitleLabel.setText("방명");
 		formTitleLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 		application.initControl(formTitleLabel);
 
@@ -198,7 +198,7 @@ public class SearchWindow {
 		application.initControl(searchFormTitleCombo);
 
 		Label formTitleNgLabel = new Label(formContainer, SWT.NONE);
-		formTitleNgLabel.setText("除外");
+		formTitleNgLabel.setText("제외");
 		formTitleNgLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 		application.initControl(formTitleNgLabel);
 
@@ -214,30 +214,30 @@ public class SearchWindow {
 		application.initControl(searchResultTable);
 
 		TableColumn columnMasterName = new TableColumn(searchResultTable, SWT.LEFT);
-		columnMasterName.setText("部屋主");
+		columnMasterName.setText("방주");
 		SwtUtils.installSorter(searchResultTableViewer, columnMasterName, PlayRoomUtils.MASTER_NAME_SORTER);
 
 		TableColumn columnTitle = new TableColumn(searchResultTable, SWT.LEFT);
-		columnTitle.setText("部屋名");
+		columnTitle.setText("방명");
 		SwtUtils.installSorter(searchResultTableViewer, columnTitle, PlayRoomUtils.TITLE_SORTER);
 
 		TableColumn columnCapacity = new TableColumn(searchResultTable, SWT.CENTER);
-		columnCapacity.setText("定員");
+		columnCapacity.setText("정원");
 		SwtUtils.installSorter(searchResultTableViewer, columnCapacity, PlayRoomUtils.CAPACITY_SORTER);
 
 		TableColumn columnHasPassword = new TableColumn(searchResultTable, SWT.CENTER);
-		columnHasPassword.setText("鍵");
+		columnHasPassword.setText("열쇠");
 		SwtUtils.installSorter(searchResultTableViewer, columnHasPassword, PlayRoomUtils.HAS_PASSWORD_SORTER);
 
 		TableColumn columnTimestamp = new TableColumn(searchResultTable, SWT.CENTER);
-		columnTimestamp.setText("作成日時");
+		columnTimestamp.setText("작성 일시");
 		SwtUtils.installSorter(searchResultTableViewer, columnTimestamp, PlayRoomUtils.TIMESTAMP_SORTER);
 
 		TableColumn columnDescription = new TableColumn(searchResultTable, SWT.LEFT);
-		columnDescription.setText("詳細・備考");
+		columnDescription.setText("상세·비고");
 
 		TableColumn columnRoomServer = new TableColumn(searchResultTable, SWT.LEFT);
-		columnRoomServer.setText("ルームサーバー");
+		columnRoomServer.setText("룸 서버");
 		SwtUtils.installSorter(searchResultTableViewer, columnRoomServer, PlayRoomUtils.ADDRESS_SORTER);
 
 		searchResultTableViewer.setContentProvider(new ArrayContentProvider());
@@ -252,19 +252,19 @@ public class SearchWindow {
 		statusBarContainer.setLayout(gridLayout);
 
 		statusServerLabel = new Label(statusBarContainer, SWT.NONE);
-		statusServerLabel.setText("検索サーバー: ");
+		statusServerLabel.setText("검색 서버: ");
 
 		GridData gridData = new GridData(SWT.CENTER, SWT.CENTER, false, false);
 		gridData.heightHint = 15;
 		new Label(statusBarContainer, SWT.SEPARATOR | SWT.VERTICAL).setLayoutData(gridData);
 
 		statusServerStatusLabel = new Label(statusBarContainer, SWT.NONE);
-		statusServerStatusLabel.setText("ログインしていません");
+		statusServerStatusLabel.setText("로그인하고 있습니다");
 
 		new Label(statusBarContainer, SWT.SEPARATOR | SWT.VERTICAL).setLayoutData(gridData);
 
 		statusSearchResultLabel = new Label(statusBarContainer, SWT.NONE);
-		statusSearchResultLabel.setText("検索結果: なし");
+		statusSearchResultLabel.setText("검색 결과: 없음");
 		statusSearchResultLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false));
 
 		searchServerLoginButton.addListener(SWT.Selection, new Listener() {
@@ -305,7 +305,7 @@ public class SearchWindow {
 		searchFormAutoQuery.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event event) {
-				searchFormAutoQuery.setText(searchFormAutoQuery.getSelection() ? "検索更新オン" : "検索更新オフ");
+				searchFormAutoQuery.setText(searchFormAutoQuery.getSelection() ?  "검색 갱신 온" : "검색 갱신 오프");
 			}
 		});
 
@@ -447,9 +447,9 @@ public class SearchWindow {
 			}
 
 			if (loginSuccess) {
-				searchServerLoginButton.setText("ログアウト");
+				searchServerLoginButton.setText("로그아웃");
 			} else {
-				searchServerLoginButton.setText("検索ログイン");
+				searchServerLoginButton.setText("검색 로그인");
 			}
 			searchServerLoginButton.setEnabled(true);
 		} catch (SWTException e) {
@@ -485,7 +485,7 @@ public class SearchWindow {
 			if (SwtUtils.isNotUIThread()) {
 				if (address == null) {
 					updateServerLoginButton(false);
-					application.getLogWindow().appendLogTo("アドレスを取得できませんでした", true, true);
+					application.getLogWindow(). appendLogTo("주소를 취득할 수 없었습니다", true, true);
 					return;
 				}
 				SwtUtils.DISPLAY.asyncExec(new Runnable() {
@@ -499,7 +499,7 @@ public class SearchWindow {
 
 			sessionState = SessionState.CONNECTING;
 
-			statusServerLabel.setText("検索サーバー: " + address);
+			statusServerLabel.setText("검색 서버: " + address);
 
 			searchResultRooms.clear();
 			searchResultTableViewer.refresh();
@@ -586,7 +586,7 @@ public class SearchWindow {
 			}
 
 			if (list.isEmpty()) {
-				ErrorLog log = new ErrorLog("検索サーバーが見つかりません");
+				ErrorLog log = new ErrorLog("검색 서버가 발견되지 않습니다");
 				application.getLogWindow().appendLogTo(log.getMessage(), true, true);
 
 				searchServerLoginButton.setEnabled(true);
@@ -679,7 +679,7 @@ public class SearchWindow {
 				}
 
 				updateServerLoginButton(true);
-				application.getLogWindow().appendLogTo("検索サーバーにログインしました", true, false);
+				application.getLogWindow(). appendLogTo("검색 서버에 로그인했습니다", true, false);
 			} catch (SWTException e) {
 			}
 		}
@@ -711,7 +711,7 @@ public class SearchWindow {
 
 		@Override
 		public void errorProtocolNumber(String number) {
-			String error = String.format("サーバーとのプロトコルナンバーが一致しないので接続できません サーバー:%s クライアント:%s", number, IProtocol.NUMBER);
+			String error = String.format("서버와의 프로토콜 넘버가 일치하지 않기 때문에 접속할 수 없습니다 서버 :%s 클라이언트 :%s", number, IProtocol.NUMBER);
 			application.getLogWindow().appendLogTo(error, true, true);
 		}
 
@@ -730,10 +730,10 @@ public class SearchWindow {
 
 				switch (sessionState) {
 				case CONNECTING:
-					application.getLogWindow().appendLogTo("検索サーバーに接続できません", true, true);
+					application.getLogWindow(). appendLogTo("검색 서버에 접속할 수 없습니다", true, true);
 					break;
 				case LOGIN:
-					application.getLogWindow().appendLogTo("検索サーバーからログアウトしました", true, false);
+					application.getLogWindow(). appendLogTo("검색 서버로부터 로그아웃 했습니다", true, false);
 					break;
 				}
 
@@ -743,9 +743,9 @@ public class SearchWindow {
 				searchResultRooms.clear();
 				searchResultTableViewer.refresh();
 
-				statusServerLabel.setText("検索サーバー: ");
-				statusServerStatusLabel.setText("ログインしていません");
-				statusSearchResultLabel.setText("検索結果: なし");
+				statusServerLabel.setText("검색 서버: ");
+				statusServerStatusLabel.setText("로그인하고 있습니다");
+				statusSearchResultLabel.setText("검색 결과: 없음");
 				statusServerLabel.getParent().layout();
 
 				updateServerLoginButton(false);
@@ -812,7 +812,7 @@ public class SearchWindow {
 
 					now.setTime(System.currentTimeMillis());
 
-					String message = "検索結果: " + searchResultRooms.size() + "件 (" + IApplication.LOG_DATE_FORMAT.format(now) + ")";
+					String message = "검색 결과: " + searchResultRooms.size() + "건 (" + IApplication.LOG_DATE_FORMAT.format(now) + ")";
 					statusSearchResultLabel.setText(message);
 					statusSearchResultLabel.getParent().layout();
 
@@ -855,7 +855,7 @@ public class SearchWindow {
 
 					double ratio = ((double) currentUsers) / ((double) maxUsers) * 100;
 
-					String text = String.format("サーバー利用率: %.1f%%  (%d / %d)", ratio, currentUsers, maxUsers);
+					String text = String.format("서버 이용율: %.1f%%  (%d / %d)", ratio, currentUsers, maxUsers);
 					statusServerStatusLabel.setText(text);
 					statusServerStatusLabel.getParent().layout();
 				} catch (SWTException e) {
@@ -872,7 +872,7 @@ public class SearchWindow {
 		searchHandlers.put(ProtocolConstants.Search.ERROR_LOGIN_BEYOND_CAPACITY, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				application.getLogWindow().appendLogTo("サーバーのログイン上限人数に達したのでログインできません", true, true);
+				application.getLogWindow(). appendLogTo("서버의 로그인 상한 인원수에 이르렀으므로 로그인할 수 없습니다", true, true);
 				return true;
 			}
 		});

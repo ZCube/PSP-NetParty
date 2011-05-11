@@ -37,8 +37,8 @@ import pspnetparty.lib.socket.IProtocol;
 
 public class PortalServer {
 	public static void main(String[] args) throws Exception {
-		System.out.printf("%s ポータルサーバー  version %s\n", AppConstants.APP_NAME, AppConstants.VERSION);
-		System.out.println("プロトコル: " + IProtocol.NUMBER);
+		System.out.printf("%s 포털 서버  version %sn", AppConstants.APP_NAME, AppConstants.VERSION);
+		System.out.println("프로토콜: " + IProtocol.NUMBER);
 
 		String iniFileName = "PortalServer.ini";
 		switch (args.length) {
@@ -46,17 +46,17 @@ public class PortalServer {
 			iniFileName = args[0];
 			break;
 		}
-		System.out.println("設定INIファイル名: " + iniFileName);
+		System.out.println("설정 INI 파일명: " + iniFileName);
 
 		IniFile ini = new IniFile(iniFileName);
 		IniSection settings = ini.getSection(IniConstants.SECTION_SETTINGS);
 
 		final int port = settings.get(IniConstants.PORT, 50000);
 		if (port < 1 || port > 65535) {
-			System.out.println("ポート番号が不正です: " + port);
+			System.out.println("포토 번호가 부정합니다: " + port);
 			return;
 		}
-		System.out.println("ポート: " + port);
+		System.out.println("포토: " + port);
 
 		ini.saveToIni();
 
@@ -74,19 +74,19 @@ public class PortalServer {
 		handlers.put("help", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("shutdown\n\tサーバーを終了させる");
-				System.out.println("status\n\t現在のサーバーの状態を表示");
-				System.out.println("rooms\n\t保持している部屋情報の一覧");
-				System.out.println("server active\n\t接続中のサーバーの一覧");
-				System.out.println("server dead\n\t接続していないサーバーの一覧");
-				System.out.println("server reload\n\tサーバーリストを再読み込みして接続を更新する");
-				System.out.println("reconnect\n\t接続していないサーバーと再接続を試みる");
+				System.out.println("shutdownnt 서버를 종료시킨다");
+				System.out.println("statusnt 현재의 서버 상태를 표시");
+				System.out.println("roomsnt 보관 유지하고 있는 방정보의 일람");
+				System.out.println("server activent 접속중의 서버의 일람");
+				System.out.println("server deadnt 접속하고 있지 않는 서버의 일람");
+				System.out.println("server reloadnt 서버 리스트를 재독 보고 붐비어 해 접속을 갱신한다");
+				System.out.println("reconnectnt 접속하고 있지 않는 서버와 재접속을 시도한다");
 			}
 		});
 		handlers.put("status", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("ポート: " + port);
+				System.out.println("포토: " + port);
 				System.out.println(engine.statusToString());
 			}
 		});
@@ -100,18 +100,18 @@ public class PortalServer {
 			@Override
 			public void process(String argument) {
 				if ("active".equalsIgnoreCase(argument)) {
-					System.out.println("[接続中のルームサーバーの一覧]");
+					System.out.println("[접속중의 룸 서버의 일람]");
 					printList(engine.listActiveRoomServers());
-					System.out.println("[接続中の検索サーバーの一覧]");
+					System.out.println("[접속중의 검색 서버의 일람]");
 					printList(engine.listActiveSearchServers());
-					System.out.println("[接続中のロビーサーバーの一覧]");
+					System.out.println("[접속중의 로비 서버의 일람]");
 					printList(engine.listActiveLobbyServers());
 				} else if ("dead".equalsIgnoreCase(argument)) {
-					System.out.println("[切断されたルームサーバーの一覧]");
+					System.out.println("[절단 된 룸 서버의 일람]");
 					printList(engine.listDeadRoomServers());
-					System.out.println("[切断された検索サーバーの一覧]");
+					System.out.println("[절단 된 검색 서버의 일람]");
 					printList(engine.listDeadSearchServers());
-					System.out.println("[切断されたロビーサーバーの一覧]");
+					System.out.println("[절단 된 로비 서버의 일람]");
 					printList(engine.listDeadLobbyServers());
 				} else if ("reload".equalsIgnoreCase(argument)) {
 					try {

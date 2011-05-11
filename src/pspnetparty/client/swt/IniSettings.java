@@ -60,7 +60,7 @@ public class IniSettings {
 		ballonNotifyLobby = section.get(BALLOON_NOTIFY_LOBBY, true);
 		ballonNotifyRoom = section.get(BALLOON_NOTIFY_ROOM, true);
 
-		tunnelTransportLayer = UDP.equals(section.get(TUNNEL_TRANSPORT_LAYER, TCP)) ? TransportLayer.UDP : TransportLayer.TCP;
+		tunnelTransportLayer = UDP.equals(section.get(TUNNEL_TRANSPORT_LAYER, UDP)) ? TransportLayer.UDP : TransportLayer.TCP;
 
 		myRoomHostName = section.get(MY_ROOM_HOST_NAME, "");
 		myRoomPort = section.get(MY_ROOM_PORT, 30000);

@@ -696,13 +696,13 @@ public class RoomEngine {
 				}
 
 				if (room.playersByName.size() >= room.maxPlayers) {
-					// 最大人数を超えたので接続を拒否します
+					// 최대 인원수를 넘었으므로 접속을 거부합니다
 					player.getConnection().send(ProtocolConstants.Room.ERROR_LOGIN_BEYOND_CAPACITY);
 					return false;
 				}
 
 				if (room.playersByName.putIfAbsent(name, player) != null) {
-					// 同名のユーザーが存在するので接続を拒否します
+					// 동명의 유저가 존재하므로 접속을 거부합니다
 					player.getConnection().send(ProtocolConstants.Room.ERROR_LOGIN_DUPLICATED_NAME);
 					return false;
 				}
@@ -1308,7 +1308,7 @@ public class RoomEngine {
 			RoomStatusProtocolDriver driver = new RoomStatusProtocolDriver(connection);
 			portalConnections.put(driver, this);
 
-			logger.log("ポータルから接続されました: " + driver.address);
+			logger.log("포털로부터 접속되었던: " + driver.address);
 
 			StringBuilder sb = new StringBuilder();
 			appendServerStatus(sb);
@@ -1354,7 +1354,7 @@ public class RoomEngine {
 		@Override
 		public void connectionDisconnected() {
 			portalConnections.remove(this);
-			logger.log("ポータルから切断されました: " + address);
+			logger.log("포털로부터 절단 되었던: " + address);
 		}
 
 		@Override

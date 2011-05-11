@@ -196,7 +196,7 @@ public class AsyncTcpServer implements IServer {
 				}
 			}
 
-			// logger.log("TCP Server Ping送信: p=" + pingCount + " d=" +
+			// logger.log("TCP Server Ping 송신: p=" + pingCount + " d=" +
 			// disconnectCount);
 			Thread.sleep(IProtocol.PING_INTERVAL);
 		}
@@ -428,7 +428,7 @@ public class AsyncTcpServer implements IServer {
 
 			@Override
 			public IProtocolDriver createDriver(final ISocketConnection connection) {
-				System.out.println(connection.getRemoteAddress() + " [接続されました]");
+				System.out.println(connection.getRemoteAddress() + " [접속되었습니다]");
 
 				return new IProtocolDriver() {
 					@Override
@@ -449,7 +449,7 @@ public class AsyncTcpServer implements IServer {
 
 					@Override
 					public void connectionDisconnected() {
-						System.out.println(connection.getRemoteAddress() + " [切断されました]");
+						System.out.println(connection.getRemoteAddress() + " [절단 되었습니다]");
 					}
 
 					@Override

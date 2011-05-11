@@ -105,13 +105,13 @@ public class LobbyUser {
 			case 1:
 				switch (user.state) {
 				case LOGIN:
-					return "参加中";
+					return "참가중";
 				case AFK:
-					return "離席中";
+					return "자리를 뜸중";
 				case PLAYING:
-					return "プレイ中";
+					return "플레이중";
 				case INACTIVE:
-					return "非アクティブ";
+					return "비액티브";
 				default:
 					return "";
 				}

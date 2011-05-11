@@ -306,13 +306,13 @@ public class SearchEngine {
 
 			SearchStatusProtocolDriver driver = new SearchStatusProtocolDriver(connection);
 
-			logger.log("ポータルから接続されました: " + driver.address);
+			logger.log("포털로부터 접속되었던: " + driver.address);
 
 			if (roomDataSource == null) {
 				connection.send(ProtocolConstants.SearchStatus.COMMAND_ASK_ROOM_DATA);
 				roomDataSource = driver;
 
-				logger.log("部屋情報ソースに設定: " + driver.address);
+				logger.log("방정보 소스로 설정: " + driver.address);
 			}
 
 			portalConnections.put(driver, this);
@@ -345,7 +345,7 @@ public class SearchEngine {
 		@Override
 		public void connectionDisconnected() {
 			portalConnections.remove(this);
-			logger.log("ポータルから切断されました: " + address);
+			logger.log("포털로부터 절단 되었던: " + address);
 
 			if (this == roomDataSource) {
 				playRoomEntries.clear();
@@ -362,13 +362,13 @@ public class SearchEngine {
 
 				if (portalConnections.isEmpty() || !isAcceptingPortal) {
 					roomDataSource = null;
-					logger.log("部屋情報ソース: なし");
+					logger.log("방정보 소스: 없음");
 				} else {
 					roomDataSource = portalConnections.firstKey();
 					roomDataSource.getConnection().send(ProtocolConstants.SearchStatus.COMMAND_ASK_ROOM_DATA);
 
 					String remoteAddress = Utility.socketAddressToStringByIP(roomDataSource.getConnection().getRemoteAddress());
-					logger.log("部屋情報ソースに設定: " + remoteAddress);
+					logger.log("방정보 소스로 설정: " + remoteAddress);
 				}
 			}
 		}
